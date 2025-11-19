@@ -11,7 +11,10 @@ const Footer = () => {
               <img
                 src={logoImage}
                 alt="Logo - Luiz Centro Automotivo"
-                style={{ width: "150px", height: "auto" }}
+                width="150"
+                height="85"
+                className="w-[110px] h-auto"
+                fetchPriority="high"
               />
             </div>
 
@@ -21,9 +24,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h2 className="mb-4 md:flex justify-center">
-              Links Rápidos
-            </h2>
+            <h2 className="mb-4 md:flex justify-center">Links Rápidos</h2>
             <div className="flex flex-col gap-2">
               <a
                 href="#inicio"
@@ -53,9 +54,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h2 className="mb-4 md:text-center">
-              Horário de atendimento
-            </h2>
+            <h2 className="mb-4 md:text-center">Horário de atendimento</h2>
             <div className="flex flex-col gap-2">
               <span className="text-white/80 md:text-center">
                 Segunda - Sexta: 8:00h às 18:00h
