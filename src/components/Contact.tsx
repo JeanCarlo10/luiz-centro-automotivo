@@ -120,7 +120,7 @@ const Contact = () => {
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-4"
+                className="space-y-4 border border-[hsl(var(--primary))]"
               >
                 <FormField
                   control={form.control}
@@ -256,7 +256,8 @@ const Contact = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-primary hover:opacity-90 transition-opacity"
+                  // className="w-full bg-gradient-primary hover:opacity-90 transition-opacity"
+                  className="w-full bg-gradient-primary py-3 text-white font-medium rounded-lg shadow-custom hover:opacity-90 transition"
                 >
                   Enviar Solicitação
                 </Button>
