@@ -270,6 +270,7 @@ const Contact = () => {
                 height="350"
                 loading="lazy"
                 aria-hidden="false"
+                allow="accelerometer"
                 style={{ borderRadius: 4 }}
                 src="https://maps.google.com.br/maps?f=d&amp;source=embed&amp;saddr=Rua+Di+Cavalcanti,+1832+Foz+do+Igua%C3%A7u+-+Paran%C3%A1&amp;
                 daddr=&amp;hl=pt-BR&amp;geocode=&amp;aq=t&amp;sll=-25.453902,-54.457097&amp;sspn=0.673311,1.352692&amp;mra=ls&amp;ie=UTF8&amp;
