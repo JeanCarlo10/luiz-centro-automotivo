@@ -10,18 +10,35 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Header />
-      <Hero />
-      <Services />
-      <About />
-      <Reviews />
-      <FAQ />
-      <Contact />
+
+      <main id="main-content" className="flex-grow">
+        <Hero />
+        <Services />
+        <About />
+        <Reviews />
+        <FAQ />
+        <Contact />
+      </main>
+
       <Footer />
       <WhatsAppButton />
     </div>
   );
+  // return (
+  //   <div className="min-h-screen">
+  //     <Header />
+  //     <Hero />
+  //     <Services />
+  //     <About />
+  //     <Reviews />
+  //     <FAQ />
+  //     <Contact />
+  //     <Footer />
+  //     <WhatsAppButton />
+  //   </div>
+  // );
 };
 
 export default Index;

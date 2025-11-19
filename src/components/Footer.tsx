@@ -21,9 +21,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white md:flex justify-center">
+            <h2 className="mb-4 md:flex justify-center">
               Links Rápidos
-            </h3>
+            </h2>
             <div className="flex flex-col gap-2">
               <a
                 href="#inicio"
@@ -53,9 +53,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white md:text-center">
+            <h2 className="mb-4 md:text-center">
               Horário de atendimento
-            </h3>
+            </h2>
             <div className="flex flex-col gap-2">
               <span className="text-white/80 md:text-center">
                 Segunda - Sexta: 8:00h às 18:00h
@@ -67,14 +67,15 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white md:flex justify-end">
+            <h2 className="mb-4 text-white md:flex justify-end">
               Redes Sociais
-            </h3>
+            </h2>
             <div className="flex gap-4 flex-column md:justify-end">
               <a
                 href="https://www.facebook.com/luizcentroautomotivo"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Acessar página do Facebook"
                 className="w-10 h-10 bg-card hover:bg-gradient-primary rounded-lg flex items-center justify-center transition-all hover:scale-110 group"
               >
                 <Facebook className="w-5 h-5 group-hover:text-primary-foreground" />
@@ -83,6 +84,7 @@ const Footer = () => {
                 href="https://www.instagram.com/luizcentroautomotivo"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Acessar página do Instagram"
                 className="w-10 h-10 bg-card hover:bg-gradient-primary rounded-lg flex items-center justify-center transition-all hover:scale-110 group"
               >
                 <Instagram className="w-5 h-5 group-hover:text-primary-foreground" />
