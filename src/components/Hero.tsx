@@ -15,12 +15,18 @@ const Hero = () => {
       id="inicio"
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-transparent" />
-      </div>
+      {/* Hero Image como IMG otimizada (melhor LCP) */}
+      <img
+        src={heroImage}
+        alt="Oficina mecânica Luiz Centro Automotivo"
+        className="absolute inset-0 w-full h-full object-cover"
+        loading="eager" 
+        decoding="async"
+        fetchPriority="high"
+      />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-transparent" />
 
       {/* Content */}
       <div className="container mx-auto px-6 md:px-8 relative z-10">

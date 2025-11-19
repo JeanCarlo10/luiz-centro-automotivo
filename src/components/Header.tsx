@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -9,27 +9,29 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Detecta scroll
+  // Scroll Listener otimizado
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 90);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      window.requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 90);
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Fecha menu mobile se trocar para desktop
+  // Fecha menu mobile ao mudar para desktop
   useEffect(() => {
-    if (!isMobile) {
-      setIsMobileMenuOpen(false);
-    }
+    if (!isMobile) setIsMobileMenuOpen(false);
   }, [isMobile]);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
-    }
-  };
+  const scrollToSection = useCallback((id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth" });
+    setIsMobileMenuOpen(false);
+  }, []);
 
   return (
     <header
@@ -44,37 +46,61 @@ const Header = () => {
           {/* Logo */}
           <img
             src={logoImage}
-            alt="Logo - Luiz Centro Automotivo"
-            style={{ width: "110px", height: "auto" }}
+            alt="Logo do Luiz Centro Automotivo"
+            width="110"
+            height="auto"
+            fetchPriority="high"
           />
 
           {/* Desktop Navigation */}
           {!isMobile && (
-            <nav className="flex items-center gap-16">
-              <button
-                onClick={() => scrollToSection("inicio")}
-                className="text-secondary-foreground hover:text-primary transition-colors"
+            <nav
+              className="flex items-center gap-16"
+              aria-label="Menu principal"
+            >
+              <a
+                href="#inicio"
+                className="text-secondary-foreground hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("inicio");
+                }}
               >
                 Início
-              </button>
-              <button
-                onClick={() => scrollToSection("servicos")}
-                className="text-secondary-foreground hover:text-primary transition-colors"
+              </a>
+
+              <a
+                href="#servicos"
+                className="text-secondary-foreground hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("servicos");
+                }}
               >
                 Serviços
-              </button>
-              <button
-                onClick={() => scrollToSection("sobre")}
-                className="text-secondary-foreground hover:text-primary transition-colors"
+              </a>
+
+              <a
+                href="#sobre"
+                className="text-secondary-foreground hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("sobre");
+                }}
               >
                 Sobre
-              </button>
-              <button
-                onClick={() => scrollToSection("contato")}
-                className="text-secondary-foreground hover:text-primary transition-colors"
+              </a>
+
+              <a
+                href="#contato"
+                className="text-secondary-foreground hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("contato");
+                }}
               >
                 Contato
-              </button>
+              </a>
             </nav>
           )}
 
@@ -98,32 +124,54 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMobile && isMobileMenuOpen && (
-          <nav className="py-4 animate-fade-in">
+          <nav
+            aria-label="Menu móvel"
+            className="py-4 transition-opacity duration-200 opacity-100"
+          >
             <div className="flex flex-col gap-4">
-              <button
-                onClick={() => scrollToSection("inicio")}
-                className="text-secondary-foreground hover:text-primary transition-colors text-left"
+              <a
+                href="#inicio"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("inicio");
+                }}
+                className="text-secondary-foreground hover:text-primary transition-colors text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
               >
                 Início
-              </button>
-              <button
-                onClick={() => scrollToSection("servicos")}
-                className="text-secondary-foreground hover:text-primary transition-colors text-left"
+              </a>
+
+              <a
+                href="#servicos"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("servicos");
+                }}
+                className="text-secondary-foreground hover:text-primary transition-colors text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
               >
                 Serviços
-              </button>
-              <button
-                onClick={() => scrollToSection("sobre")}
-                className="text-secondary-foreground hover:text-primary transition-colors text-left"
+              </a>
+
+              <a
+                href="#sobre"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("sobre");
+                }}
+                className="text-secondary-foreground hover:text-primary transition-colors text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
               >
                 Sobre
-              </button>
-              <button
-                onClick={() => scrollToSection("contato")}
-                className="text-secondary-foreground hover:text-primary transition-colors text-left"
+              </a>
+
+              <a
+                href="#contato"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("contato");
+                }}
+                className="text-secondary-foreground hover:text-primary transition-colors text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
               >
                 Contato
-              </button>
+              </a>
 
               <Button
                 onClick={() => scrollToSection("contato")}
