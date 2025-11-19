@@ -1,12 +1,15 @@
-import About from "../components/About";
+import React, { Suspense } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import Reviews from "@/components/Reviews";
-import FAQ from "@/components/FAQ";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+
+// * React.lazy() carrega componentes quando necessário *
+const Reviews = React.lazy(() => import("@/components/Reviews"));
+const FAQ = React.lazy(() => import("@/components/FAQ"));
+const Services = React.lazy(() => import("@/components/Services"));
+const About = React.lazy(() => import("@/components/About"));
+const Contact = React.lazy(() => import("@/components/Contact"));
+const Footer = React.lazy(() => import("@/components/Footer"));
+const WhatsAppButton = React.lazy(() => import("@/components/WhatsAppButton"));
 
 const Index = () => {
   return (
@@ -15,30 +18,19 @@ const Index = () => {
 
       <main id="main-content" className="flex-grow">
         <Hero />
-        <Services />
-        <About />
-        <Reviews />
-        <FAQ />
-        <Contact />
-      </main>
+        <Suspense fallback={null}>
+          <Services />
+          <About />
+          <Reviews />
+          <FAQ />
+          <Contact />
 
-      <Footer />
-      <WhatsAppButton />
+          <Footer />
+          <WhatsAppButton />
+        </Suspense>
+      </main>
     </div>
   );
-  // return (
-  //   <div className="min-h-screen">
-  //     <Header />
-  //     <Hero />
-  //     <Services />
-  //     <About />
-  //     <Reviews />
-  //     <FAQ />
-  //     <Contact />
-  //     <Footer />
-  //     <WhatsAppButton />
-  //   </div>
-  // );
 };
 
 export default Index;

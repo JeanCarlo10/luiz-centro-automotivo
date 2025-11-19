@@ -9,6 +9,9 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     minify: "esbuild", 
+    target: "esnext",
+    sourcemap: false,
+    cssMinify: true,
     rollupOptions: {
       external: ["react-devtools"],
     },
@@ -20,7 +23,3 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }));
-
-// export default defineConfig({
-//   plugins: [react()],
-// })

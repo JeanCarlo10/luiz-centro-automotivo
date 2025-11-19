@@ -35,7 +35,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`h-24 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-secondary/95 backdrop-blur-md shadow-elegant"
           : "bg-transparent"
@@ -46,9 +46,10 @@ const Header = () => {
           {/* Logo */}
           <img
             src={logoImage}
-            alt="Logo do Luiz Centro Automotivo"
+            alt="Logo - Luiz Centro Automotivo"
             width="110"
-            height="auto"
+            height="70"
+            className="w-[110px] h-auto"
             fetchPriority="high"
           />
 
