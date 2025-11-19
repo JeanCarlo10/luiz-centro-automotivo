@@ -41,7 +41,6 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 md:px-8">
         <div className="flex items-center justify-between h-24">
-          
           {/* Logo */}
           <img
             src={logoImage}
@@ -82,6 +81,11 @@ const Header = () => {
           {/* Mobile Menu Button */}
           {isMobile && (
             <button
+              aria-label={
+                isMobileMenuOpen
+                  ? "Fechar menu de navegação"
+                  : "Abrir menu de navegação"
+              }
               className={`${
                 isScrolled ? "text-secondary-foreground" : "text-foreground"
               }`}

@@ -73,13 +73,16 @@ const Contact = () => {
       outro: "Outro",
     };
 
-    const serviceText = serviceTextMap[data.service] || "Serviço não especificado";
+    const serviceText =
+      serviceTextMap[data.service] || "Serviço não especificado";
 
     const message = `Olá! Gostaria de solicitar um orçamento:\n\nNome: ${data.name}\nEmail: ${data.email}\nTelefone: ${data.phone}\nServiço: ${serviceText}\nMensagem: ${data.message}`;
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/5545999050773?text=${encodedMessage}`, "_blank");
 
-    toast.success("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+    toast.success(
+      "Mensagem enviada com sucesso! Entraremos em contato em breve."
+    );
 
     form.reset({
       name: "",
@@ -266,17 +269,18 @@ const Contact = () => {
             {/* Map */}
             <div className="rounded-lg p-4 overflow-hidden shadow-custom">
               <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3600.775641084764!2d-54.59041532480658!3d-25.512528036161832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f6900cd05545cf%3A0xf81cdec09b221b72!2sLuiz%20Centro%20Automotivo!5e0!3m2!1spt-BR!2sbr!4v1763529954277!5m2!1spt-BR!2sbr"
                 width="100%"
                 height="350"
-                loading="lazy"
-                aria-hidden="false"
-                allow="geolocation"
                 style={{ borderRadius: 4 }}
-                src="https://maps.google.com.br/maps?f=d&amp;source=embed&amp;saddr=Rua+Di+Cavalcanti,+1832+Foz+do+Igua%C3%A7u+-+Paran%C3%A1&amp;
-                daddr=&amp;hl=pt-BR&amp;geocode=&amp;aq=t&amp;sll=-25.453902,-54.457097&amp;sspn=0.673311,1.352692&amp;mra=ls&amp;ie=UTF8&amp;
-                ll=-25.453902,-54.457097&amp;spn=0.673311,1.352692&amp;t=m&amp;layer=c&amp;cbll=-25.512384,-54.588109&amp;
-                panoid=OjNYRduVEHQaUb5-LcDJ-A&amp;cbp=12,146.92,,0,0&amp;output=svembed"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mapa de localização da empresa"
+                aria-label="Mapa mostrando a localização da empresa"
               ></iframe>
+
+              
             </div>
 
             <div className="rounded-lg p-6 shadow-custom flex flex-col gap-8">
