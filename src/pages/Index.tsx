@@ -16,7 +16,7 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
 
-      <main id="main-content" className="flex-grow">
+      <main>
         <Hero />
         <Suspense fallback={null}>
           <Services />
