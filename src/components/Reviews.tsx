@@ -34,13 +34,13 @@ const reviews = [
 
 const Reviews = () => {
   return (
-    <section id="avaliacoes" className="py-20 bg-background">
+    <section id="avaliacoes" className="py-20 bg-(--background)">
       <div className="container mx-auto px-6 md:px-8">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            O Que Nossos <span className="text-primary">Clientes Dizem</span>
+            O Que Nossos <span className="text-(--primary)">Clientes Dizem</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-(--muted-foreground) max-w-2xl mx-auto">
             Avaliações reais de clientes satisfeitos com nossos serviços
           </p>
         </div>
@@ -56,14 +56,14 @@ const Reviews = () => {
                   {[...Array(review.rating)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-5 h-5 fill-primary text-primary"
+                      className="w-5 h-5 fill-primary text-(--primary)"
                     />
                   ))}
                 </div>
-                <p className="text-foreground mb-4">{review.comment}</p>
+                <p className="text-(--foreground) mb-4">{review.comment}</p>
                 <div className="border-t border-border pt-4">
-                  <p className="font-semibold text-foreground">{review.name}</p>
-                  <p className="text-sm text-muted-foreground">{review.date}</p>
+                  <p className="font-semibold text-(--foreground)">{review.name}</p>
+                  <p className="text-sm text-(--muted-foreground)">{review.date}</p>
                 </div>
               </CardContent>
             </Card>

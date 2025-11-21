@@ -98,9 +98,9 @@ const Contact = () => {
       <div className="container mx-auto px-6 md:px-8">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Entre em <span className="text-primary">Contato</span>
+            Entre em <span className="text-(--primary)">Contato</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-(--muted-foreground) max-w-2xl mx-auto">
             Estamos prontos para atender você e cuidar do seu veículo
           </p>
         </div>
@@ -109,7 +109,7 @@ const Contact = () => {
           {/* Form */}
           <div className="rounded-lg p-6 shadow-custom">
             <div className="flex flex-col gap-2">
-              <h1 className="text-primary text-3xl font-semibold">
+              <h1 className="text-(--primary) text-3xl font-semibold">
                 Solicitar Orçamento
               </h1>
               <span className="text-sm mb-4">
@@ -128,7 +128,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>
-                        Nome <span className="text-primary">*</span>
+                        Nome <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
                         <Input placeholder="Seu nome completo" {...field} />
@@ -144,7 +144,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>
-                        Email <span className="text-primary">*</span>
+                        Email <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -164,7 +164,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>
-                        Telefone <span className="text-primary">*</span>
+                        Telefone <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
                         <InputMask
@@ -186,7 +186,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>
-                        Serviço <span className="text-primary">*</span>
+                        Serviço <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
                         <Controller
@@ -240,7 +240,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>
-                        Mensagem <span className="text-primary">*</span>
+                        Mensagem <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
                         <Textarea

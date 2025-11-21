@@ -42,13 +42,13 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <section id="dicas" className="py-20 bg-background">
+    <section id="dicas" className="py-20 bg-(--background)">
       <div className="container mx-auto px-6 md:px-8">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Dicas e <span className="text-primary">Perguntas Frequentes</span>
+            Dicas e <span className="text-(--primary)">Perguntas Frequentes</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-(--muted-foreground) max-w-2xl mx-auto">
             Tire suas dúvidas sobre manutenção automotiva
           </p>
         </div>
@@ -59,12 +59,12 @@ const FAQ = () => {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="bg-card border border-border rounded-lg px-6 animate-fade-in"
+                className="bg-(card) border border-border rounded-lg px-6 animate-fade-in"
               >
-                <AccordionTrigger className="text-left hover:text-primary">
+                <AccordionTrigger className="text-left hover:text-(--primary)">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
+                <AccordionContent className="text-(--muted-foreground)">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

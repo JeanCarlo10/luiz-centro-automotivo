@@ -12,12 +12,12 @@ const features = [
 
 const About = () => {
   return (
-    <section id="sobre" className="py-20 bg-secondary">
+    <section id="sobre" className="py-20 bg-(--secondary)">
       <div className="container mx-auto px-6 md:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Sobre <span className="text-primary">Nossa Oficina</span>
+              Sobre <span className="text-(--primary)">Nossa Oficina</span>
             </h2>
             <p className="text-lg text-white/90 mb-6">
               Somos uma oficina mecânica completa, focada em oferecer serviços de
@@ -31,7 +31,7 @@ const About = () => {
             <div className="grid sm:grid-cols-2 gap-4">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <CheckCircle className="w-6 h-6 text-(--primary) shrink-0 mt-1" />
                   <span className="text-white">{feature}</span>
                 </div>
               ))}

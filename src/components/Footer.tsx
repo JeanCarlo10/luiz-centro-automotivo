@@ -3,7 +3,7 @@ import logoImage from "@/assets/logo.webp";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary py-12">
+    <footer className="bg-(--secondary) text-(--background) py-12">
       <div className="container mx-auto px-6 md:px-8">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
@@ -18,35 +18,35 @@ const Footer = () => {
               />
             </div>
 
-            <p className="text-white/80">
+            <p className="text-(--background)/80">
               Cuidando do seu veículo com excelência e dedicação desde de 2001.
             </p>
           </div>
 
           <div>
-            <h2 className="mb-4 md:flex justify-center">Links Rápidos</h2>
+            <h2 className="mb-4 text-xl font-bold md:flex justify-center">Links Rápidos</h2>
             <div className="flex flex-col gap-2">
               <a
                 href="#inicio"
-                className="text-white/80 hover:text-primary transition-colors md:flex justify-center"
+                className="text-(--background)/80 hover:text-(--primary) md:flex justify-center"
               >
                 Início
               </a>
               <a
                 href="#servicos"
-                className="text-white/80 hover:text-primary transition-colors md:flex justify-center"
+                className="text-(--background)/80 hover:text-(--primary) md:flex justify-center"
               >
                 Serviços
               </a>
               <a
                 href="#sobre"
-                className="text-white/80 hover:text-primary transition-colors md:flex justify-center"
+                className="text-(--background)/80 hover:text-(--primary) md:flex justify-center"
               >
                 Sobre
               </a>
               <a
                 href="#contato"
-                className="text-white/80 hover:text-primary transition-colors md:flex justify-center"
+                className="text-(--background)/80 hover:text-(--primary) md:flex justify-center"
               >
                 Contato
               </a>
@@ -54,19 +54,19 @@ const Footer = () => {
           </div>
 
           <div>
-            <h2 className="mb-4 md:text-center">Horário de atendimento</h2>
+            <h2 className="mb-4 text-xl font-bold md:text-center">Horário de atendimento</h2>
             <div className="flex flex-col gap-2">
-              <span className="text-white/80 md:text-center">
+              <span className="text-(--background)/80 md:text-center">
                 Segunda - Sexta: 8:00h às 18:00h
               </span>
-              <span className="text-white/80 md:text-center">
+              <span className="text-(--background)/80 md:text-center">
                 Sábado: 8:00h às 12:00h
               </span>
             </div>
           </div>
 
           <div>
-            <h2 className="mb-4 text-white md:flex justify-end">
+            <h2 className="mb-4 text-xl font-bold text-(--background) md:flex justify-end">
               Redes Sociais
             </h2>
             <div className="flex gap-4 flex-column md:justify-end">
@@ -75,18 +75,18 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Acessar página do Facebook"
-                className="w-10 h-10 bg-card hover:bg-gradient-primary rounded-lg flex items-center justify-center transition-all hover:scale-110 group"
+                className="w-10 h-10 bg-(--background) text-(--foreground) hover-bg-gradient-primary rounded-lg flex items-center justify-center transition-all hover:scale-110 group"
               >
-                <Facebook className="w-5 h-5 group-hover:text-primary-foreground" />
+                <Facebook className="w-5 h-5" />
               </a>
               <a
                 href="https://www.instagram.com/luizcentroautomotivo"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Acessar página do Instagram"
-                className="w-10 h-10 bg-card hover:bg-gradient-primary rounded-lg flex items-center justify-center transition-all hover:scale-110 group"
+                className="w-10 h-10 bg-(--background) text-(--foreground) hover-bg-gradient-primary rounded-lg flex items-center justify-center transition-all hover:scale-110 group"
               >
-                <Instagram className="w-5 h-5 group-hover:text-primary-foreground" />
+                <Instagram className="w-5 h-5" />
               </a>
             </div>
           </div>

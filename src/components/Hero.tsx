@@ -33,7 +33,7 @@ const Hero = () => {
         <div className="max-w-3xl animate-fade-in mt-24">
           <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-white">
             Cuidamos do seu
-            <span className="block text-primary">veículo com</span>
+            <span className="block text-(--primary)">veículo com</span>
             <span className="block text-white">excelência</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl">
