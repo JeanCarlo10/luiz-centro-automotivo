@@ -61,7 +61,7 @@ const Header = () => {
             >
               <a
                 href="#inicio"
-                className="text-secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                className="text-(secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection("inicio");

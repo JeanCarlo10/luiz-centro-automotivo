@@ -21,7 +21,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
-// import InputMask from "react-input-mask";
+import { NumericFormat } from "react-number-format";
 
 const quoteFormSchema = z.object({
   name: z
@@ -158,6 +158,28 @@ const Contact = () => {
                   )}
                 />
 
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        Telefone<span className="text-(--primary)">*</span>
+                      </FormLabel>
+                      <FormControl>
+                        <NumericFormat
+                          {...field}
+                          format="(##) #####-####"
+                          mask="_"
+                          placeholder="(99) 99999-9999"
+                          customInput={Input}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
                 {/* <FormField
                   control={form.control}
                   name="phone"
@@ -280,8 +302,6 @@ const Contact = () => {
                 title="Mapa de localização da empresa"
                 aria-label="Mapa mostrando a localização da empresa"
               ></iframe>
-
-              
             </div>
 
             <div className="rounded-lg p-6 shadow-custom flex flex-col gap-8">

@@ -26,7 +26,7 @@ const Hero = () => {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-transparent" />
+      <div className="absolute inset-0 from-secondary/95 via-secondary/80 to-transparent" />
 
       {/* Content */}
       <div className="container mx-auto px-6 md:px-8 relative z-10">
