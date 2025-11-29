@@ -61,7 +61,7 @@ const Header = () => {
             >
               <a
                 href="#inicio"
-                className="text-(secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                className="text-(secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline-primary"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection("inicio");
@@ -72,7 +72,7 @@ const Header = () => {
 
               <a
                 href="#servicos"
-                className="text-secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                className="text-secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline-primary"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection("servicos");
@@ -83,7 +83,7 @@ const Header = () => {
 
               <a
                 href="#sobre"
-                className="text-secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                className="text-secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline-primary"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection("sobre");
@@ -94,7 +94,7 @@ const Header = () => {
 
               <a
                 href="#contato"
-                className="text-secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                className="text-secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline-primary"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection("contato");
@@ -136,7 +136,7 @@ const Header = () => {
                   e.preventDefault();
                   scrollToSection("inicio");
                 }}
-                className="text-secondary-foreground hover:text-(--primary) transition-colors text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                className="text-secondary-foreground hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
               >
                 Início
               </a>
@@ -147,7 +147,7 @@ const Header = () => {
                   e.preventDefault();
                   scrollToSection("servicos");
                 }}
-                className="text-secondary-foreground hover:text-(--primary) transition-colors text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                className="text-secondary-foreground hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
               >
                 Serviços
               </a>
@@ -158,7 +158,7 @@ const Header = () => {
                   e.preventDefault();
                   scrollToSection("sobre");
                 }}
-                className="text-secondary-foreground hover:text-(--primary) transition-colors text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                className="text-secondary-foreground hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
               >
                 Sobre
               </a>
@@ -169,7 +169,7 @@ const Header = () => {
                   e.preventDefault();
                   scrollToSection("contato");
                 }}
-                className="text-secondary-foreground hover:text-(--primary) transition-colors text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                className="text-secondary-foreground hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
               >
                 Contato
               </a>

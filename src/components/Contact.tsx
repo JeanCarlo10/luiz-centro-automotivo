@@ -21,7 +21,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
-import { NumericFormat } from "react-number-format";
+import { IMaskInput } from "react-imask";
 
 const quoteFormSchema = z.object({
   name: z
@@ -120,18 +120,22 @@ const Contact = () => {
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-4 border border-[hsl(var(--primary))]"
+                className="space-y-4"
               >
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>
+                      <FormLabel className="gap-0.5">
                         Nome <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Seu nome completo" {...field} />
+                        <Input
+                          {...field}
+                          placeholder="Seu nome completo"
+                          className="border border-(--input) focus:border-(--primary) focus:ring-2 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -143,14 +147,15 @@ const Contact = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>
+                      <FormLabel className="gap-0.5">
                         Email <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
                         <Input
+                          {...field}
                           type="email"
                           placeholder="seu@email.com"
-                          {...field}
+                          className="border border-(--input) focus:border-(--primary) focus:ring-2 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
                         />
                       </FormControl>
                       <FormMessage />
@@ -163,51 +168,28 @@ const Contact = () => {
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>
-                        Telefone<span className="text-(--primary)">*</span>
+                      <FormLabel className="gap-0.5">
+                        Telefone <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
-                        <NumericFormat
+                        <IMaskInput
                           {...field}
-                          format="(##) #####-####"
-                          mask="_"
+                          mask="(00) 00000-0000"
                           placeholder="(99) 99999-9999"
-                          customInput={Input}
+                          className="border border-(--input) focus:border-(--primary) focus:ring-1 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
-                {/* <FormField
-                  control={form.control}
-                  name="phone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        Telefone <span className="text-(--primary)">*</span>
-                      </FormLabel>
-                      <FormControl>
-                        <InputMask
-                          {...field}
-                          mask="(99) 99999-9999"
-                          placeholder="(99) 99999-9999"
-                        >
-                          {(inputProps) => <Input {...inputProps} />}
-                        </InputMask>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                /> */}
 
                 <FormField
                   control={form.control}
                   name="service"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>
+                      <FormLabel className="gap-0.5">
                         Serviço <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
@@ -221,31 +203,59 @@ const Contact = () => {
                               onValueChange={controllerField.onChange}
                             >
                               <FormControl>
-                                <SelectTrigger>
+                                <SelectTrigger className="border border-(--input) focus:border-(--primary) focus:ring-1 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full">
                                   <SelectValue placeholder="Selecione o serviço" />
                                 </SelectTrigger>
                               </FormControl>
-                              <SelectContent>
-                                <SelectItem value="manutencao-preventiva">
+                              <SelectContent className="bg-white border-(--input)">
+                                <SelectItem
+                                  value="manutencao-preventiva"
+                                  className="hover:bg-(--primary) hover:text-white focus:bg-(--primary) focus:text-white"
+                                >
                                   Manutenção Preventiva
                                 </SelectItem>
-                                <SelectItem value="revisao-completa">
+                                <SelectItem
+                                  value="revisao-completa"
+                                  className="hover:bg-(--primary) hover:text-white focus:bg-(--primary) focus:text-white"
+                                >
                                   Revisão Completa
                                 </SelectItem>
-                                <SelectItem value="troca-oleo">
+                                <SelectItem
+                                  value="troca-oleo"
+                                  className="hover:bg-(--primary) hover:text-white focus:bg-(--primary) focus:text-white"
+                                >
                                   Troca de Óleo
                                 </SelectItem>
-                                <SelectItem value="freios">
+                                <SelectItem
+                                  value="freios"
+                                  className="hover:bg-(--primary) hover:text-white focus:bg-(--primary) focus:text-white"
+                                >
                                   Sistema de Freios
                                 </SelectItem>
-                                <SelectItem value="suspensao">
+                                <SelectItem
+                                  value="suspensao"
+                                  className="hover:bg-(--primary) hover:text-white focus:bg-(--primary) focus:text-white"
+                                >
                                   Suspensão
                                 </SelectItem>
-                                <SelectItem value="eletrica">
+                                <SelectItem
+                                  value="eletrica"
+                                  className="hover:bg-(--primary) hover:text-white focus:bg-(--primary) focus:text-white"
+                                >
                                   Parte Elétrica
                                 </SelectItem>
-                                <SelectItem value="motor">Motor</SelectItem>
-                                <SelectItem value="outro">Outro</SelectItem>
+                                <SelectItem
+                                  value="motor"
+                                  className="hover:bg-(--primary) hover:text-white focus:bg-(--primary) focus:text-white"
+                                >
+                                  Motor
+                                </SelectItem>
+                                <SelectItem
+                                  value="outro"
+                                  className="hover:bg-(--primary) hover:text-white focus:bg-(--primary) focus:text-white"
+                                >
+                                  Outro
+                                </SelectItem>
                               </SelectContent>
                             </Select>
                           )}
@@ -261,14 +271,14 @@ const Contact = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>
+                      <FormLabel className="gap-0.5">
                         Mensagem <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Descreva o problema ou serviço desejado..."
-                          className="min-h-[100px]"
                           {...field}
+                          placeholder="Descreva o problema ou serviço desejado..."
+                          className="min-h-[100px] border border-(--input) focus:border-(--primary) focus:ring-2 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
                         />
                       </FormControl>
                       <FormMessage />
@@ -306,8 +316,8 @@ const Contact = () => {
 
             <div className="rounded-lg p-6 shadow-custom flex flex-col gap-8">
               <div className="flex flex-col md:flex-row">
-                <div className="size-12 bg-gradient-primary rounded-full flex items-center justify-center mr-4 mb-1">
-                  <Phone className="size-6 text-white" />
+                <div className="min-w-12 min-h-12 w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mr-4 mb-1">
+                  <Phone className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-lg font-semibold">Telefone</span>
@@ -316,13 +326,13 @@ const Contact = () => {
               </div>
 
               <div className="flex flex-col md:flex-row">
-                <div className="size-12 bg-gradient-primary rounded-full flex items-center justify-center mr-4 mb-1">
-                  <Mail className="size-6 text-white" />
+                <div className="min-w-12 min-h-12 w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mr-4 mb-1">
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-lg font-semibold">E-mail</span>
                   <a
-                    className="text-base"
+                    className="sm:text-base md:text-sm lg:text-base"
                     href="mailto:luizanunciosface@hotmail.com"
                   >
                     luizanunciosface@hotmail.com
@@ -331,8 +341,8 @@ const Contact = () => {
               </div>
 
               <div className="flex flex-col md:flex-row">
-                <div className="size-12 bg-gradient-primary rounded-full flex items-center justify-center mr-4 mb-1">
-                  <MapPin className="size-6 text-white" />
+                <div className="min-w-12 min-h-12 w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mr-4 mb-1">
+                  <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-lg font-semibold">Endereço</span>
