@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/performance.webp";
+import heroImage from "@/assets/hero-workshop.webp";
 import { ArrowRight } from "lucide-react";
 
 const Hero = () => {

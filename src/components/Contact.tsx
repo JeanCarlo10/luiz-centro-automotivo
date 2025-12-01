@@ -137,7 +137,7 @@ const Contact = () => {
                           className="border border-(--input) focus:border-(--primary) focus:ring-2 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-(--primary)"/>
                     </FormItem>
                   )}
                 />
@@ -158,7 +158,7 @@ const Contact = () => {
                           className="border border-(--input) focus:border-(--primary) focus:ring-2 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-(--primary)"/>
                     </FormItem>
                   )}
                 />
@@ -179,7 +179,7 @@ const Contact = () => {
                           className="border border-(--input) focus:border-(--primary) focus:ring-1 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-(--primary)"/>
                     </FormItem>
                   )}
                 />
@@ -261,7 +261,7 @@ const Contact = () => {
                           )}
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-(--primary)"/>
                     </FormItem>
                   )}
                 />
@@ -281,15 +281,14 @@ const Contact = () => {
                           className="min-h-[100px] border border-(--input) focus:border-(--primary) focus:ring-2 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-(--primary)"/>
                     </FormItem>
                   )}
                 />
 
                 <Button
                   type="submit"
-                  // className="w-full bg-gradient-primary hover:opacity-90 transition-opacity"
-                  className="w-full bg-gradient-primary py-3 text-white font-medium rounded-lg shadow-custom hover:opacity-90 transition"
+                  className="w-full bg-gradient-primary py-3 text-white font-medium rounded-lg shadow-custom hover:opacity-90 transition cursor-pointer"
                 >
                   Enviar Solicitação
                 </Button>
