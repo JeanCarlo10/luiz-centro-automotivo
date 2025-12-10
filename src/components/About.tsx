@@ -1,5 +1,4 @@
 import { CheckCircle } from "lucide-react";
-import mechanicImage from "@/assets/mechanic-working.webp";
 import Carousel from "@/components/Carousel";
 import { motion } from "framer-motion";
 
