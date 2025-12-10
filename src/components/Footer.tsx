@@ -1,12 +1,18 @@
 import { Facebook, Instagram } from "lucide-react";
 import logoImage from "@/assets/logo.webp";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
     <footer className="bg-(--secondary) text-(--background) py-12">
       <div className="container mx-auto px-6 md:px-8">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="space-y-6"
+          >
             <div className="mb-4">
               <img
                 src={logoImage}
@@ -19,42 +25,57 @@ const Footer = () => {
             </div>
 
             <p className="text-(--background)/80">
-              Cuidando do seu veículo com excelência e dedicação desde de 2001.
+              Cuidando do seu veículo com excelência e dedicação há mais de 30
+              anos.
             </p>
-          </div>
+          </motion.div>
 
-          <div>
-            <h2 className="mb-4 text-xl font-bold md:flex justify-center">Links Rápidos</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="space-y-6"
+          >
+            <h2 className="mb-4 text-xl font-bold md:flex justify-center">
+              Links Rápidos
+            </h2>
             <div className="flex flex-col gap-2">
               <a
-                href="#inicio"
+                href="#home"
                 className="text-(--background)/80 hover:text-(--primary) md:flex justify-center"
               >
                 Início
               </a>
               <a
-                href="#servicos"
+                href="#service"
                 className="text-(--background)/80 hover:text-(--primary) md:flex justify-center"
               >
                 Serviços
               </a>
               <a
-                href="#sobre"
+                href="#about"
                 className="text-(--background)/80 hover:text-(--primary) md:flex justify-center"
               >
                 Sobre
               </a>
               <a
-                href="#contato"
+                href="#contact"
                 className="text-(--background)/80 hover:text-(--primary) md:flex justify-center"
               >
                 Contato
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          <div>
-            <h2 className="mb-4 text-xl font-bold md:text-center">Horário de atendimento</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="space-y-6"
+          >
+            <h2 className="mb-4 text-xl font-bold md:text-center">
+              Horário de atendimento
+            </h2>
             <div className="flex flex-col gap-2">
               <span className="text-(--background)/80 md:text-center">
                 Segunda - Sexta: 8:00h às 18:00h
@@ -63,9 +84,14 @@ const Footer = () => {
                 Sábado: 8:00h às 12:00h
               </span>
             </div>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.6 }}
+            className="space-y-6"
+          >
             <h2 className="mb-4 text-xl font-bold text-(--background) md:flex justify-end">
               Redes Sociais
             </h2>
@@ -89,7 +115,7 @@ const Footer = () => {
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="border-t border-border pt-8 text-center text-xs text-white/70 ">

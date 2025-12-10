@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
-import { Menu, X } from "lucide-react";
+import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import logoImage from "@/assets/logo.webp";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const isMobile = useIsMobile();
@@ -26,6 +27,7 @@ const Header = () => {
     if (!isMobile) setIsMobileMenuOpen(false);
   }, [isMobile]);
 
+  // Função para scroll nas seções
   const scrollToSection = useCallback((id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -33,12 +35,19 @@ const Header = () => {
     setIsMobileMenuOpen(false);
   }, []);
 
+  // Função para desabilitar o scroll do body quando o menu está aberto
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isMobileMenuOpen]);
+
   return (
     <header
       className={`h-24 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-secondary/95 backdrop-blur-md shadow-elegant"
-          : "bg-transparent"
+        isScrolled ? "bg-(--secondary)" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6 md:px-8">
@@ -60,44 +69,44 @@ const Header = () => {
               aria-label="Menu principal"
             >
               <a
-                href="#inicio"
-                className="text-(secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline-primary"
+                href="#home"
+                className="text-(--secondary-foreground) hover:text-(--primary) transition-colors focus-visible:outline-primary"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("inicio");
+                  scrollToSection("home");
                 }}
               >
                 Início
               </a>
 
               <a
-                href="#servicos"
-                className="text-secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline-primary"
+                href="#service"
+                className="text-(--secondary-foreground) hover:text-(--primary) transition-colors focus-visible:outline-primary"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("servicos");
+                  scrollToSection("service");
                 }}
               >
                 Serviços
               </a>
 
               <a
-                href="#sobre"
-                className="text-secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline-primary"
+                href="#about"
+                className="text-(--secondary-foreground) hover:text-(--primary) transition-colors focus-visible:outline-primary"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("sobre");
+                  scrollToSection("about");
                 }}
               >
                 Sobre
               </a>
 
               <a
-                href="#contato"
-                className="text-secondary-foreground hover:text-(--primary) transition-colors focus-visible:outline-primary"
+                href="#contact"
+                className="text-(--secondary-foreground) hover:text-(--primary) transition-colors focus-visible:outline-primary"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("contato");
+                  scrollToSection("contact");
                 }}
               >
                 Contato
@@ -114,74 +123,111 @@ const Header = () => {
                   : "Abrir menu de navegação"
               }
               className={`${
-                isScrolled ? "text-secondary-foreground" : "text-foreground"
+                isScrolled
+                  ? "text-(--secondary-foreground)"
+                  : "text-(--foreground)"
               }`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {/* Animação para o menu de hambúrguer transformando em "X" */}
+              <motion.div
+                className="w-6 h-1 bg-white mb-1"
+                animate={{
+                  rotate: isMobileMenuOpen ? 45 : 0,
+                  y: isMobileMenuOpen ? 8 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.div
+                className="w-6 h-1 bg-white mb-1"
+                animate={{
+                  opacity: isMobileMenuOpen ? 0 : 1,
+                }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.div
+                className="w-6 h-1 bg-white"
+                animate={{
+                  rotate: isMobileMenuOpen ? -45 : 0,
+                  y: isMobileMenuOpen ? -8 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+              />
             </button>
           )}
         </div>
 
         {/* Mobile Navigation */}
         {isMobile && isMobileMenuOpen && (
-          <nav
+          <motion.nav
             aria-label="Menu móvel"
-            className="py-4 transition-opacity duration-200 opacity-100"
+            className="fixed inset-y-0 right-0 h-full w-[75%] bg-(--secondary) py-8 px-8 z-50 flex flex-col gap-4 overflow-y-auto"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            transition={{ duration: 0.3 }}
           >
-            <div className="flex flex-col gap-4">
+            <button
+              aria-label="Fechar menu de navegação"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="absolute top-4 right-4 text-white"
+            >
+              <X size={24} />
+            </button>
+
+            <div className="flex flex-col gap-10">
               <a
-                href="#inicio"
+                href="#home"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("inicio");
+                  scrollToSection("home");
                 }}
-                className="text-secondary-foreground hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
+                className="text-white text-3xl hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
               >
                 Início
               </a>
 
               <a
-                href="#servicos"
+                href="#service"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("servicos");
+                  scrollToSection("service");
                 }}
-                className="text-secondary-foreground hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
+                className="text-white text-3xl hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
               >
                 Serviços
               </a>
 
               <a
-                href="#sobre"
+                href="#about"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("sobre");
+                  scrollToSection("about");
                 }}
-                className="text-secondary-foreground hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
+                className="text-white text-3xl hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
               >
                 Sobre
               </a>
 
               <a
-                href="#contato"
+                href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("contato");
+                  scrollToSection("contact");
                 }}
-                className="text-secondary-foreground hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
+                className="text-white text-3xl hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
               >
                 Contato
               </a>
 
               <Button
-                onClick={() => scrollToSection("contato")}
-                className="bg-gradient-primary hover:opacity-90 transition-opacity w-full"
+                onClick={() => scrollToSection("contact")}
+                className="bg-gradient-primary text-white cursor-pointer hover:opacity-90 transition-opacity w-full"
               >
                 Agendar
               </Button>
             </div>
-          </nav>
+          </motion.nav>
         )}
       </div>
     </header>

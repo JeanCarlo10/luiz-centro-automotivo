@@ -94,7 +94,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contato" className="py-20 bg-background">
+    <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-6 md:px-8">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -137,7 +137,7 @@ const Contact = () => {
                           className="border border-(--input) focus:border-(--primary) focus:ring-2 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
                         />
                       </FormControl>
-                      <FormMessage className="text-(--primary)"/>
+                      <FormMessage className="text-(--primary)" />
                     </FormItem>
                   )}
                 />
@@ -158,7 +158,7 @@ const Contact = () => {
                           className="border border-(--input) focus:border-(--primary) focus:ring-2 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
                         />
                       </FormControl>
-                      <FormMessage className="text-(--primary)"/>
+                      <FormMessage className="text-(--primary)" />
                     </FormItem>
                   )}
                 />
@@ -179,7 +179,7 @@ const Contact = () => {
                           className="border border-(--input) focus:border-(--primary) focus:ring-1 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
                         />
                       </FormControl>
-                      <FormMessage className="text-(--primary)"/>
+                      <FormMessage className="text-(--primary)" />
                     </FormItem>
                   )}
                 />
@@ -261,7 +261,7 @@ const Contact = () => {
                           )}
                         />
                       </FormControl>
-                      <FormMessage className="text-(--primary)"/>
+                      <FormMessage className="text-(--primary)" />
                     </FormItem>
                   )}
                 />
@@ -281,7 +281,7 @@ const Contact = () => {
                           className="min-h-[100px] border border-(--input) focus:border-(--primary) focus:ring-2 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
                         />
                       </FormControl>
-                      <FormMessage className="text-(--primary)"/>
+                      <FormMessage className="text-(--primary)" />
                     </FormItem>
                   )}
                 />
@@ -298,21 +298,6 @@ const Contact = () => {
 
           {/* Contact Info Cards */}
           <div className="flex flex-col gap-8">
-            {/* Map */}
-            <div className="rounded-lg p-4 overflow-hidden shadow-custom">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3600.775641084764!2d-54.59041532480658!3d-25.512528036161832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f6900cd05545cf%3A0xf81cdec09b221b72!2sLuiz%20Centro%20Automotivo!5e0!3m2!1spt-BR!2sbr!4v1763529954277!5m2!1spt-BR!2sbr"
-                width="100%"
-                height="350"
-                style={{ borderRadius: 4 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Mapa de localização da empresa"
-                aria-label="Mapa mostrando a localização da empresa"
-              ></iframe>
-            </div>
-
             <div className="rounded-lg p-6 shadow-custom flex flex-col gap-8">
               <div className="flex flex-col md:flex-row">
                 <div className="min-w-12 min-h-12 w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mr-4 mb-1">
@@ -350,6 +335,21 @@ const Contact = () => {
                   </span>
                 </div>
               </div>
+            </div>
+
+            {/* Map */}
+            <div className="rounded-lg p-4 overflow-hidden shadow-custom">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3600.775641084764!2d-54.59041532480658!3d-25.512528036161832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f6900cd05545cf%3A0xf81cdec09b221b72!2sLuiz%20Centro%20Automotivo!5e0!3m2!1spt-BR!2sbr!4v1763529954277!5m2!1spt-BR!2sbr"
+                width="100%"
+                height="350"
+                style={{ borderRadius: 4 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mapa de localização da empresa"
+                aria-label="Mapa mostrando a localização da empresa"
+              ></iframe>
             </div>
           </div>
         </div>
