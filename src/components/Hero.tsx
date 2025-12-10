@@ -71,7 +71,7 @@
 
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/bg-red.jpg";
-import carImage from "@/assets/ferrari.png";
+import carImage from "@/assets/ferrari.webp";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 

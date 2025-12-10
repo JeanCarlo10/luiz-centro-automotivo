@@ -1,5 +1,5 @@
 import { Facebook, Instagram } from "lucide-react";
-import logoImage from "@/assets/logo.webp";
+import logoImage from "@/assets/logo_teste.webp";
 import { motion } from "framer-motion";
 
 const Footer = () => {
