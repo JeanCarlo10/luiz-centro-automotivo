@@ -69,47 +69,51 @@ const Header = () => {
               aria-label="Menu principal"
             >
               <a
-                href="#home"
-                className="text-(--secondary-foreground) hover:text-(--primary) transition-colors focus-visible:outline-primary"
+                href="#home" 
+                className="relative group text-xl text-(--secondary-foreground)"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection("home");
                 }}
               >
                 Início
+                <span className="absolute left-0 bottom-0 block h-0.5 bg-white w-0 group-hover:w-full transition-all duration-500 ease-in-out transform group-hover:scale-x-100"></span>
               </a>
 
               <a
                 href="#service"
-                className="text-(--secondary-foreground) hover:text-(--primary) transition-colors focus-visible:outline-primary"
+                className="relative group text-xl text-(--secondary-foreground)"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection("service");
                 }}
               >
                 Serviços
+                <span className="absolute left-0 bottom-0 block h-0.5 bg-white w-0 group-hover:w-full transition-all duration-500 ease-in-out transform group-hover:scale-x-100"></span>
               </a>
 
               <a
                 href="#about"
-                className="text-(--secondary-foreground) hover:text-(--primary) transition-colors focus-visible:outline-primary"
+                className="relative group text-xl text-(--secondary-foreground)"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection("about");
                 }}
               >
                 Sobre
+                <span className="absolute left-0 bottom-0 block h-0.5 bg-white w-0 group-hover:w-full transition-all duration-500 ease-in-out transform group-hover:scale-x-100"></span>
               </a>
 
               <a
                 href="#contact"
-                className="text-(--secondary-foreground) hover:text-(--primary) transition-colors focus-visible:outline-primary"
+                className="relative group text-xl text-(--secondary-foreground)"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection("contact");
                 }}
               >
                 Contato
+                <span className="absolute left-0 bottom-0 block h-0.5 bg-white w-0 group-hover:w-full transition-all duration-500 ease-in-out transform group-hover:scale-x-100"></span>
               </a>
             </nav>
           )}

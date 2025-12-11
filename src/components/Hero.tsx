@@ -108,10 +108,8 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-white">
-            Cuidamos do seu
-            <span className="block text-white">veículo com</span>
-            <span className="block text-white">excelência</span>
+          <h1 className="text-3xl md:text-5xl font-bold mb-8 leading-tight text-white">
+            Cuidamos do seu veículo com excelência
           </h1>
           <p className="text-xl md:text-2xl text-white/85 mb-8 max-w-2xl">
             Manutenção preventiva e corretiva com equipamentos de última geração
@@ -119,9 +117,12 @@ const Hero = () => {
           </p>
           <Button
             size="lg"
+            // onClick={(e) => {
+            //   e.preventDefault();
+            //   scrollToContact();
+            // }}
             onClick={scrollToContact}
-            className="bg-transparent border-(--yellow) text-(--yellow) font-semibold hover:opacity-90 transition-opacity text-lg hover:bg-(--yellow) hover:text-white"
-            variant="outline"
+            className="bg-transparent border-(--yellow) border text-(--yellow) font-semibold cursor-pointer hover:opacity-90 transition-opacity text-lg hover:bg-(--yellow) hover:text-white"
           >
             Agendar Atendimento
             <ArrowRight className="ml-2" />
@@ -132,7 +133,7 @@ const Hero = () => {
           className="absolute inset-0 h-full"
           initial={{ x: "100%" }}
           animate={{ x: 0 }}
-          transition={{ type: "spring", stiffness: 100, damping: 25 }}
+          transition={{ type: "spring", stiffness: 200, damping: 25 }}
         >
           <img
             src={carImage}
