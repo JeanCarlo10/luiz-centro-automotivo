@@ -120,7 +120,8 @@ const Hero = () => {
           <Button
             size="lg"
             onClick={scrollToContact}
-            className="bg-(--yellow) font-semibold hover:opacity-90 transition-opacity text-lg"
+            className="bg-transparent border-(--yellow) text-(--yellow) font-semibold hover:opacity-90 transition-opacity text-lg hover:bg-(--yellow) hover:text-white"
+            variant="outline"
           >
             Agendar Atendimento
             <ArrowRight className="ml-2" />

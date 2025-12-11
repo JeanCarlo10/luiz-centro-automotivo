@@ -43,8 +43,8 @@ const faqs = [
 const FAQ = () => {
   return (
     <section id="dicas" className="py-20 bg-(--background)">
-      <div className="container mx-auto px-6 md:px-8">
-        <div className="text-center mb-12 animate-fade-in">
+      <div className="container mx-auto px-6 md:px-8 ">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Dicas e <span className="text-(--primary)">Perguntas Frequentes</span>
           </h2>

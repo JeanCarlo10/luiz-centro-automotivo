@@ -7,7 +7,7 @@ import Mecanica04 from "@/assets/Mecanica_04.webp";
 import Mecanica05 from "@/assets/Mecanica_05.webp";
 import Mecanica06 from "@/assets/Mecanica_06.webp";
 
-const data = [
+const images = [
   { backgroundImage: Mecanica01 },
   { backgroundImage: Mecanica02 },
   { backgroundImage: Mecanica03 },
@@ -28,22 +28,20 @@ const Carousel = () => {
         breakpoints={{
           640: { slidesPerView: 1, spaceBetween: 15 },
           768: { slidesPerView: 1, spaceBetween: 15 },
-          1024: { slidesPerView: 1, spaceBetween: 20 },
+          1024: { slidesPerView: 1, spaceBetween: 15 },
         }}
-        className="max-w-[90%] lg:max-w-[80%] "
+        className="w-full"
       >
-        {data.map((item, index) => (
+        {images.map((item, index) => (
           <SwiperSlide key={index}>
             <div
-              className="relative flex items-center justify-center h-[350px] rounded-xl overflow-hidden"
+              className="flex items-center justify-center h-[450px] rounded-xl overflow-hidden"
               style={{
                 backgroundImage: `url(${item.backgroundImage})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
-            >
-              {/* <div className="absolute inset-0 bg-black opacity-10" /> */}
-            </div>
+            ></div>
           </SwiperSlide>
         ))}
       </Swiper>

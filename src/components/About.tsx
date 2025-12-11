@@ -15,11 +15,12 @@ const About = () => {
   return (
     <section id="about" className="py-20 bg-(--secondary)">
       <div className="container mx-auto px-6 md:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="flex flex-col lg:flex-row gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full lg:w-1/2"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Sobre <span className="text-(--primary)">Nossa Oficina</span>
@@ -48,16 +49,9 @@ const About = () => {
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="w-full lg:w-1/2"
           >
             <Carousel />
-            {/* <div className="bg-gradient-primary p-1 rounded-lg shadow-elegant">
-              <img
-                src={mechanicImage}
-                alt="Mecânico profissional trabalhando em um veículo"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div> */}
           </motion.div>
         </div>
       </div>
