@@ -138,10 +138,10 @@ const Hero = () => {
             src={carImage}
             alt="Carro Ferrari"
             // className="absolute inset-y-0 right-0 w-[110px]md:w-1/2 lg:w-2/3 h-auto object-contain"
-            className="absolute inset-y-0 right-0 bottom-0 sm:w-3/4 md:w-1/2 lg:w-2/4 h-auto object-contain"
-            loading="eager"
+            className="absolute inset-y-0 right-0 bottom-0 sm:w-3/4 md:w-1/2 lg:w-2/4 h-auto object-cover"
+            // fetchPriority="high"
+            loading="lazy"
             decoding="async"
-            fetchPriority="high"
           />
         </motion.div>
       </div>

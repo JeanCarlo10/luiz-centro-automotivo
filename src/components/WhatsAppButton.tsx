@@ -21,7 +21,7 @@ const WhatsAppButton = () => {
         <TooltipTrigger asChild>
           <button aria-label="Enviar mensagem via whatsapp"
             onClick={openWhatsApp}
-            className="fixed bottom-6 right-6 w-16 h-16 bg-[#25D366] hover:bg-[#20BD5C] rounded-full flex items-center justify-center transition-all hover:scale-110 cursor-pointer"
+            className="fixed z-10 bottom-6 right-6 w-16 h-16 bg-[#25D366] hover:bg-[#20BD5C] rounded-full flex items-center justify-center transition-all hover:scale-110 cursor-pointer"
           >
             <FaWhatsapp className="w-8 h-8 text-white" />
             <div className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-20"></div>
