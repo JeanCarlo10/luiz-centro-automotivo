@@ -3,7 +3,6 @@
 @layer theme {
   :root {
     --radius: 0.5rem;
-    overflow-x: hidden;
   }
 }
 
