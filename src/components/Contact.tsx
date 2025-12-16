@@ -66,17 +66,23 @@ const Contact = () => {
       "manutencao-preventiva": "Manutenção Preventiva",
       "revisao-completa": "Revisão Completa",
       "troca-oleo": "Troca de Óleo",
-      freios: "Sistema de Freios",
-      suspensao: "Suspensão",
-      eletrica: "Parte Elétrica",
-      motor: "Motor",
-      outro: "Outro",
+      "freios": "Sistema de Freios",
+      "suspensao": "Suspensão",
+      "eletrica": "Parte Elétrica",
+      "motor": "Motor",
+      "outro": "Outro",
     };
 
     const serviceText =
       serviceTextMap[data.service] || "Serviço não especificado";
 
-    const message = `Olá! Gostaria de solicitar um orçamento:\n\nNome: ${data.name}\nEmail: ${data.email}\nTelefone: ${data.phone}\nServiço: ${serviceText}\nMensagem: ${data.message}`;
+    let message;
+    if (data.service === "outro") {
+      message = `Olá!\n\nNome: ${data.name}\nEmail: ${data.email}\nTelefone: ${data.phone}\nServiço: ${serviceText}\nMensagem: ${data.message}`;
+    } else {
+      message = `Olá! Gostaria de solicitar um orçamento:\n\nNome: ${data.name}\nEmail: ${data.email}\nTelefone: ${data.phone}\nServiço: ${serviceText}\nMensagem: ${data.message}`;
+    }
+
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/5545999050773?text=${encodedMessage}`, "_blank");
 
@@ -290,7 +296,7 @@ const Contact = () => {
                   type="submit"
                   className="w-full bg-gradient-primary py-3 text-white font-medium rounded-lg shadow-custom hover:opacity-90 transition cursor-pointer"
                 >
-                  Enviar Solicitação
+                  Enviar solicitação
                 </Button>
               </form>
             </Form>

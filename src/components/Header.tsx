@@ -69,7 +69,7 @@ const Header = () => {
               aria-label="Menu principal"
             >
               <a
-                href="#home" 
+                href="#home"
                 className="relative group text-xl text-(--secondary-foreground)"
                 onClick={(e) => {
                   e.preventDefault();
@@ -126,11 +126,7 @@ const Header = () => {
                   ? "Fechar menu de navegação"
                   : "Abrir menu de navegação"
               }
-              className={`${
-                isScrolled
-                  ? "text-(--secondary-foreground)"
-                  : "text-(--foreground)"
-              }`}
+              className={"cursor-pointer"}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {/* Animação para o menu de hambúrguer transformando em "X" */}
@@ -163,75 +159,85 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMobile && isMobileMenuOpen && (
-          <motion.nav
-            aria-label="Menu móvel"
-            className="fixed inset-y-0 right-0 h-full w-[75%] bg-(--secondary) py-8 px-8 z-50 flex flex-col gap-4 overflow-y-auto"
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 100 }}
-            transition={{ duration: 0.3 }}
-          >
-            <button
-              aria-label="Fechar menu de navegação"
+          <>
+            {/* Overlay */}
+            <div
+              className="fixed inset-0 bg-black opacity-80 z-40"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute top-4 right-4 text-white"
+            />
+
+            <motion.nav
+              aria-label="Menu móvel"
+              className="fixed inset-y-0 right-0 w-[80%] sm:w-[70%] bg-(--secondary) py-12 px-8 z-50 flex flex-col overflow-y-auto"
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 100 }}
+              transition={{ duration: 0.3 }}
             >
-              <X size={24} />
-            </button>
-
-            <div className="flex flex-col gap-10">
-              <a
-                href="#home"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("home");
-                }}
-                className="text-white text-3xl hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
+              <button
+                aria-label="Fechar menu de navegação"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="absolute top-4 right-4 text-white cursor-pointer"
               >
-                Início
-              </a>
+                <X size={28} />
+              </button>
 
-              <a
-                href="#service"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("service");
-                }}
-                className="text-white text-3xl hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
-              >
-                Serviços
-              </a>
+              <div className="flex flex-col gap-12">
+                <a
+                  href="#home"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("home");
+                  }}
+                  className="text-white text-3xl hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
+                >
+                  Início
+                </a>
 
-              <a
-                href="#about"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("about");
-                }}
-                className="text-white text-3xl hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
-              >
-                Sobre
-              </a>
+                <a
+                  href="#service"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("service");
+                  }}
+                  className="text-white text-3xl hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
+                >
+                  Serviços
+                </a>
 
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("contact");
-                }}
-                className="text-white text-3xl hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
-              >
-                Contato
-              </a>
+                <a
+                  href="#about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("about");
+                  }}
+                  className="text-white text-3xl hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
+                >
+                  Sobre
+                </a>
 
-              <Button
-                onClick={() => scrollToSection("contact")}
-                className="bg-gradient-primary text-white cursor-pointer hover:opacity-90 transition-opacity w-full"
-              >
-                Agendar
-              </Button>
-            </div>
-          </motion.nav>
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("contact");
+                  }}
+                  className="text-white text-3xl hover:text-(--primary) transition-colors text-left focus-visible:outline-primary"
+                >
+                  Contato
+                </a>
+              </div>
+
+              <div className="flex flex-1 items-end">
+                <Button
+                  onClick={() => scrollToSection("contact")}
+                  className="bg-gradient-primary text-white cursor-pointer hover:opacity-90 transition-opacity w-full "
+                >
+                  Agendar
+                </Button>
+              </div>
+            </motion.nav>
+          </>
         )}
       </div>
     </header>
