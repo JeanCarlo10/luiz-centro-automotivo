@@ -84,7 +84,7 @@ const item: Variants = {
 const FAQ = () => {
   return (
     <section id="dicas" className="pb-20 bg-(--background)">
-      <div className="container mx-auto px-6 md:px-8 overflow-x-hidden">
+      <div className="container mx-auto px-6 md:px-8 overflow-hidden">
         <div className="text-center mb-12">
           <motion.h2
             variants={SlideUp(0.2)}

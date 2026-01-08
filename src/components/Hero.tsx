@@ -1,4 +1,5 @@
-import heroImage from "@/assets/Hero_04.webp";
+// import heroImage from "@/assets/Hero_04.webp";
+import HeroCarousel from "./HeroCarousel";
 
 const Hero = () => {
   // const scrollToContact = () => {
@@ -13,14 +14,15 @@ const Hero = () => {
       id="home"
       className="relative h-screen"
     >
-      <img
+      <HeroCarousel/>
+      {/* <img
         src={heroImage}
         alt="Oficina mecânica Luiz Centro Automotivo"
         className="absolute inset-0 w-full h-full object-cover"
         loading="eager"
         decoding="async"
         fetchPriority="high"
-      />
+      /> */}
 
       {/* Content */}
       {/* <div className="container mx-auto px-6 md:px-8 relative z-10">

@@ -1,5 +1,5 @@
 import { Facebook, Instagram } from "lucide-react";
-import logoImage from "@/assets/logo_teste.webp";
+import logoImage from "@/assets/logo.webp";
 import { motion } from "framer-motion";
 import { SlideUp } from "@/animations";
 
