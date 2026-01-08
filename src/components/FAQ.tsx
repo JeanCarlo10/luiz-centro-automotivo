@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { SlideUp } from "@/animations";
 
 const faqs = [
@@ -50,6 +51,36 @@ const faqs = [
   },
 ];
 
+//Animação do accordion
+const container: Variants = {
+  hidden: {
+    opacity: 1,
+  },
+  show: {
+    opacity: 1,
+
+    transition: {
+      delayChildren: 0.6,
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const item: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      ease: "easeOut",
+    },
+  },
+};
+
 const FAQ = () => {
   return (
     <section id="dicas" className="pb-20 bg-(--background)">
@@ -75,21 +106,29 @@ const FAQ = () => {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="bg-(--card) border-(--border) border rounded-lg px-6"
-              >
-                <AccordionTrigger className="text-left hover:text-(--primary)">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-(--muted-foreground)">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
+          <Accordion type="single" collapsible>
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              className="space-y-4"
+            >
+              {faqs.map((faq, index) => (
+                <motion.div key={index} variants={item}>
+                  <AccordionItem
+                    value={`item-${index}`}
+                    className="bg-(--card) border-(--border) border rounded-lg px-6"
+                  >
+                    <AccordionTrigger className="group cursor-pointer text-left [&>svg]:transition-all [&>svg]:duration-200 hover:text-(--primary) hover:[&>svg]:text-(--primary)">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-(--muted-foreground)">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
+              ))}
+            </motion.div>
           </Accordion>
         </div>
       </div>
