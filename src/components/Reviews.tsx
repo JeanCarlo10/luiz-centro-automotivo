@@ -1,5 +1,7 @@
 import { Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
+import { SlideUp } from "@/animations";
 
 const reviews = [
   {
@@ -36,13 +38,24 @@ const Reviews = () => {
   return (
     <section id="avaliacoes" className="py-20 bg-(--background)">
       <div className="container mx-auto px-6 md:px-8">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            O Que Nossos <span className="text-(--primary)">Clientes Dizem</span>
-          </h2>
-          <p className="text-lg text-(--muted-foreground) max-w-2xl mx-auto">
+        <div className="text-center mb-12">
+          <motion.h2
+            variants={SlideUp(0.2)}
+            initial="initial"
+            whileInView={"animate"}
+            className="text-4xl md:text-5xl font-bold mb-4"
+          >
+            O Que Nossos{" "}
+            <span className="text-(--primary)">Clientes Dizem</span>
+          </motion.h2>
+          <motion.p
+            variants={SlideUp(0.4)}
+            initial="initial"
+            whileInView={"animate"}
+            className="text-lg text-(--muted-foreground) max-w-2xl mx-auto"
+          >
             Avaliações reais de clientes satisfeitos com nossos serviços
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -62,8 +75,12 @@ const Reviews = () => {
                 </div>
                 <p className="text-(--foreground) mb-4">{review.comment}</p>
                 <div className="border-t border-border pt-4">
-                  <p className="font-semibold text-(--foreground)">{review.name}</p>
-                  <p className="text-sm text-(--muted-foreground)">{review.date}</p>
+                  <p className="font-semibold text-(--foreground)">
+                    {review.name}
+                  </p>
+                  <p className="text-sm text-(--muted-foreground)">
+                    {review.date}
+                  </p>
                 </div>
               </CardContent>
             </Card>

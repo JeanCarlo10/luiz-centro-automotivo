@@ -1,6 +1,7 @@
 import { Facebook, Instagram } from "lucide-react";
 import logoImage from "@/assets/logo_teste.webp";
 import { motion } from "framer-motion";
+import { SlideUp } from "@/animations";
 
 const Footer = () => {
   return (
@@ -8,9 +9,9 @@ const Footer = () => {
       <div className="container mx-auto px-6 md:px-8" >
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            variants={SlideUp(0.2)}
+            initial="initial"
+            whileInView={"animate"}
             className="space-y-6"
           >
             <div className="mb-4">
@@ -31,9 +32,9 @@ const Footer = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
+            variants={SlideUp(0.4)}
+            initial="initial"
+            whileInView={"animate"}
             className="space-y-6"
           >
             <h2 className="mb-4 text-xl font-bold md:flex justify-center">
@@ -68,9 +69,9 @@ const Footer = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
+            variants={SlideUp(0.6)}
+            initial="initial"
+            whileInView={"animate"}
             className="space-y-6"
           >
             <h2 className="mb-4 text-xl font-bold md:text-center">
@@ -87,9 +88,9 @@ const Footer = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.6 }}
+            variants={SlideUp(0.8)}
+            initial="initial"
+            whileInView={"animate"}
             className="space-y-6"
           >
             <h2 className="mb-4 text-xl font-bold text-(--background) md:flex justify-end">

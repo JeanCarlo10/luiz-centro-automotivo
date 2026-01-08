@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 
-
 // * React.lazy() carrega componentes quando necessário *
 const Reviews = React.lazy(() => import("@/components/Reviews"));
 const FAQ = React.lazy(() => import("@/components/FAQ"));

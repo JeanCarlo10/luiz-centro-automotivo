@@ -51,7 +51,12 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-6 md:px-8">
-        <div className="flex items-center justify-between h-24">
+        <motion.div
+          initial={{ y: -100 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center justify-between h-24"
+        >
           {/* Logo */}
           <img
             src={logoImage}
@@ -155,7 +160,7 @@ const Header = () => {
               />
             </button>
           )}
-        </div>
+        </motion.div>
 
         {/* Mobile Navigation */}
         {isMobile && isMobileMenuOpen && (

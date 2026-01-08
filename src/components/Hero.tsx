@@ -1,4 +1,4 @@
-import heroImage from "@/assets/Hero_01.webp";
+import heroImage from "@/assets/Hero_04.webp";
 
 const Hero = () => {
   // const scrollToContact = () => {

@@ -6,6 +6,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import { SlideUp } from "@/animations";
 
 const services = [
   {
@@ -49,12 +50,22 @@ const Services = () => {
     <section id="service" className="py-20 bg-(--background)">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <motion.h2
+            variants={SlideUp(0.2)}
+            initial="initial"
+            whileInView={"animate"}
+            className="text-4xl md:text-5xl font-bold mb-4"
+          >
             Nossos <span className="text-(--primary)">Serviços</span>
-          </h2>
-          <p className="text-xl text-(--muted-foreground) max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            variants={SlideUp(0.4)}
+            initial="initial"
+            whileInView={"animate"}
+            className="text-xl text-(--muted-foreground) max-w-2xl mx-auto"
+          >
             Soluções completas para manter seu veículo funcionando perfeitamente
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -22,28 +22,30 @@ import {
 } from "@/components/ui/form";
 import { toast } from "sonner";
 import { IMaskInput } from "react-imask";
+import { motion } from "framer-motion";
+import { SlideUp } from "@/animations";
 
 const quoteFormSchema = z.object({
   name: z
     .string()
     .trim()
-    .min(1, { message: "Nome é obrigatório" })
+    .min(1, { message: "Nome obrigatório!" })
     .max(100, { message: "Nome deve ter menos de 100 caracteres" }),
   email: z
     .string()
     .trim()
-    .email({ message: "Email inválido" })
-    .max(255, { message: "Email deve ter menos de 255 caracteres" }),
+    .email({ message: "E-mail inválido!" })
+    .max(255, { message: "E-mail deve ter menos de 255 caracteres" }),
   phone: z
     .string()
     .trim()
-    .min(1, { message: "Telefone é obrigatório" })
+    .min(1, { message: "Telefone obrigatório!" })
     .max(20, { message: "Telefone deve ter menos de 20 caracteres" }),
   service: z.string().min(1, { message: "Selecione um serviço" }),
   message: z
     .string()
     .trim()
-    .min(1, { message: "Mensagem é obrigatória" })
+    .min(1, { message: "Mensagem obrigatória!" })
     .max(1000, { message: "Mensagem deve ter menos de 1000 caracteres" }),
 });
 
@@ -66,11 +68,11 @@ const Contact = () => {
       "manutencao-preventiva": "Manutenção Preventiva",
       "revisao-completa": "Revisão Completa",
       "troca-oleo": "Troca de Óleo",
-      "freios": "Sistema de Freios",
-      "suspensao": "Suspensão",
-      "eletrica": "Parte Elétrica",
-      "motor": "Motor",
-      "outro": "Outro",
+      freios: "Sistema de Freios",
+      suspensao: "Suspensão",
+      eletrica: "Parte Elétrica",
+      motor: "Motor",
+      outro: "Outro",
     };
 
     const serviceText =
@@ -100,15 +102,25 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-background">
+    <section id="contact" className="pb-20 bg-background">
       <div className="container mx-auto px-6 md:px-8">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <motion.h2
+            variants={SlideUp(0.2)}
+            initial="initial"
+            whileInView={"animate"}
+            className="text-4xl md:text-5xl font-bold mb-4"
+          >
             Entre em <span className="text-(--primary)">Contato</span>
-          </h2>
-          <p className="text-lg text-(--muted-foreground) max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            variants={SlideUp(0.4)}
+            initial="initial"
+            whileInView={"animate"}
+            className="text-lg text-(--muted-foreground) max-w-2xl mx-auto"
+          >
             Estamos prontos para atender você e cuidar do seu veículo
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -118,7 +130,7 @@ const Contact = () => {
               <h1 className="text-(--primary) text-3xl font-semibold">
                 Solicitar Orçamento
               </h1>
-              <span className="text-sm mb-4">
+              <span className="text-sm mb-8">
                 Preencha o formulário e entraremos em contato
               </span>
             </div>
@@ -154,7 +166,7 @@ const Contact = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="gap-0.5">
-                        Email <span className="text-(--primary)">*</span>
+                        E-mail <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -294,7 +306,7 @@ const Contact = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-primary py-3 text-white font-medium rounded-lg shadow-custom hover:opacity-90 transition cursor-pointer"
+                  className="w-full py-6 bg-(--primary) text-white font-semibold rounded-lg shadow-custom hover:bg-(--primary-medium) cursor-pointer"
                 >
                   Enviar solicitação
                 </Button>

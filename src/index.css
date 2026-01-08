@@ -21,6 +21,7 @@
 
     --primary: hsl(0, 100%, 50%);
     --primary-foreground: hsl(0 0% 100%);
+    --primary-medium: hsl(0, 100%, 35%);
 
     --secondary: hsl(0 0% 10%);
     --secondary-foreground: hsl(0 0% 100%);
