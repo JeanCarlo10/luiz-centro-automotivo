@@ -63,8 +63,9 @@ const Header = () => {
             alt="Logo - Luiz Centro Automotivo"
             width="110"
             height="70"
-            className="w-[110px] h-auto"
-            fetchPriority="high"
+            className="h-auto"
+            loading="eager"
+            decoding="async"
           />
 
           {/* Desktop Navigation */}
