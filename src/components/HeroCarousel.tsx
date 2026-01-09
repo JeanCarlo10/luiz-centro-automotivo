@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import { motion } from "framer-motion";
 import { SlideUp } from "@/animations";
 
@@ -15,20 +15,11 @@ type Slide = {
   alt: string;
   title: string;
   subtitle: string;
-  positionMobile?: string; // ex: "50% 35%"
-  positionDesktop?: string; // ex: "50% 50%"
+  positionMobile?: string;
+  positionDesktop?: string;
 };
 
 const slides: Slide[] = [
-  {
-    src: Hero01,
-    alt: "Hero 01",
-    title: "POTÊNCIA E\nPERFORMANCE",
-    subtitle:
-      "Performance de verdade começa com manutenção precisa, garantindo força, estabilidade e eficiência em cada trajeto.",
-    positionMobile: "50% 40%",
-    positionDesktop: "50% 50%",
-  },
   {
     src: Hero02,
     alt: "Hero 02",
@@ -36,6 +27,15 @@ const slides: Slide[] = [
     subtitle:
       "Experiência, confiança e tecnologia para cuidar do seu veículo com a qualidade que você merece.",
     positionMobile: "55% 35%",
+    positionDesktop: "50% 50%",
+  },
+  {
+    src: Hero01,
+    alt: "Hero 01",
+    title: "POTÊNCIA E\nPERFORMANCE",
+    subtitle:
+      "Performance de verdade começa com manutenção precisa, garantindo força, estabilidade e eficiência em cada trajeto.",
+    positionMobile: "50% 40%",
     positionDesktop: "50% 50%",
   },
   {
@@ -51,7 +51,8 @@ const slides: Slide[] = [
     src: Hero04,
     alt: "Hero 04",
     title: "ALINHAMENTO E\nBALANCEAMENTO",
-    subtitle: "Feitos com precisão para garantir segurança, conforto e desempenho.",
+    subtitle:
+      "Feitos com precisão para garantir segurança, conforto e desempenho.",
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
   },
@@ -59,7 +60,8 @@ const slides: Slide[] = [
     src: Hero05,
     alt: "Hero 05",
     title: "+30 ANOS DE\nHISTÓRIA",
-    subtitle: "Construímos uma trajetória sólida no cuidado automotivo, com experiência que evolui a cada geração e compromisso com a qualidade.",
+    subtitle:
+      "Construímos uma trajetória sólida no cuidado automotivo, com experiência que evolui a cada geração e compromisso com a qualidade.",
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
   },
@@ -67,7 +69,8 @@ const slides: Slide[] = [
     src: Hero06,
     alt: "Hero 06",
     title: "INJEÇÃO\nELETRÔNICA",
-    subtitle: "Diagnóstico avançado e precisão para garantir desempenho e eficiência da injeção eletrônica.",
+    subtitle:
+      "Diagnóstico avançado e precisão para garantir desempenho e eficiência da injeção eletrônica.",
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
   },
@@ -76,11 +79,11 @@ const slides: Slide[] = [
 const HeroCarousel = () => {
   return (
     <section className="w-full">
-      {/* altura profissional: mobile menor, desktop maior */}
       <div className="relative w-full h-screen">
         <Swiper
-          modules={[Autoplay, Pagination]}
+          modules={[Autoplay, Pagination, EffectFade]}
           slidesPerView={1}
+          effect={"fade"}
           loop
           grabCursor
           autoplay={{ delay: 3500, disableOnInteraction: false }}
@@ -139,7 +142,7 @@ const HeroCarousel = () => {
                         variants={SlideUp(0.6)}
                         initial="initial"
                         whileInView={"animate"}
-                        className="mt-6 inline-flex items-center rounded-lg bg-(--primary) px-6 py-3 text-sm font-semibold hover:bg-(--primary-medium) transition"
+                        className="mt-6 inline-flex items-center cursor-pointer rounded-lg bg-(--primary) px-6 py-3 font-semibold hover:bg-(--primary-medium) transition"
                       >
                         Agendar Atendimento
                       </motion.button>
@@ -156,43 +159,3 @@ const HeroCarousel = () => {
 };
 
 export default HeroCarousel;
-
-// const images = [
-//   { backgroundImage: Hero01 },
-//   { backgroundImage: Hero02 },
-//   { backgroundImage: Hero03 },
-//   { backgroundImage: Hero04 },
-//   { backgroundImage: Hero05 },
-//   { backgroundImage: Hero06 },
-// ];
-
-// const HeroCarousel = () => {
-//   return (
-//     <div className="w-full h-screen">
-//       <Swiper
-//         modules={[Autoplay, Pagination]}
-//         grabCursor={true}
-//         pagination={{ clickable: true }}
-//         autoplay={{ delay: 3000, disableOnInteraction: false }}
-//         slidesPerView={1}
-//         className="w-full h-full"
-//       >
-//         {images.map((item, index) => (
-//           <SwiperSlide key={index} className="w-full h-full">
-//             <div
-//               className="w-full h-full "
-//               style={{
-//                 backgroundImage: `url(${item.backgroundImage})`,
-//                 backgroundSize: "cover",
-//                 backgroundPosition: "center",
-//                 backgroundRepeat: "no-repeat",
-//               }}
-//             ></div>
-//           </SwiperSlide>
-//         ))}
-//       </Swiper>
-//     </div>
-//   );
-// };
-
-// export default HeroCarousel;

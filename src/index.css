@@ -21,7 +21,7 @@
 
     --primary: hsl(0, 100%, 50%);
     --primary-foreground: hsl(0 0% 100%);
-    --primary-medium: hsl(0, 100%, 35%);
+    --primary-medium: hsl(2, 100%, 38%);
 
     --secondary: hsl(0 0% 10%);
     --secondary-foreground: hsl(0 0% 100%);
@@ -69,5 +69,10 @@
 
   .hover-shadow-custom:hover {
     box-shadow: 0px 6px 16px 0px #00000026;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: white !important;
+    opacity: 1;
   }
 }
