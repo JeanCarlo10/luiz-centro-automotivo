@@ -115,7 +115,7 @@ const HeroCarousel = () => {
                 />
 
                 <div className="absolute inset-0 flex items-center">
-                  <div className="container mx-auto px-4">
+                  <div className="container mx-auto px-8">
                     <div className="max-w-xl text-white text-center md:text-left">
                       {/* TITLE */}
 
@@ -143,7 +143,7 @@ const HeroCarousel = () => {
                         variants={SlideUp(0.6)}
                         initial="initial"
                         whileInView={"animate"}
-                        className="mt-6 inline-flex text-white items-center cursor-pointer rounded-lg bg-(--primary) px-6 py-3 font-semibold hover:bg-(--primary-medium) transition"
+                        className="mt-6 inline-flex text-white items-center cursor-pointer rounded-lg bg-(--primary-medium) px-6 py-3 font-semibold hover:bg-(--primary-medium) transition"
                       >
                         Agendar Atendimento
                       </motion.button>
