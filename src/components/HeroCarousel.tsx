@@ -149,7 +149,7 @@ const HeroCarousel = () => {
                         variants={SlideUp(0.6)}
                         initial="initial"
                         whileInView={"animate"}
-                        className="mt-6 inline-flex text-white items-center cursor-pointer rounded-lg bg-(--primary-medium) px-6 py-3 font-semibold hover:bg-(--primary-medium) transition"
+                        className="mt-6 inline-flex text-white items-center cursor-pointer rounded-lg transition bg-(--primary-medium) px-6 py-3 font-semibold hover:bg-(--primary-medium) hover:scale-105"
                       >
                         Agendar Atendimento
                       </motion.button>
