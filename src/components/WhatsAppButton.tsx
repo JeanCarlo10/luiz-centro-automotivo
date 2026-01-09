@@ -11,7 +11,8 @@ const WhatsAppButton = () => {
   const openWhatsApp = () => {
     window.open(
       "https://wa.me/5545999050773?text=Olá, gostaria de agendar um serviço!",
-      "_blank"
+      "_blank",
+      "noopener,noreferrer"
     );
   };
 
