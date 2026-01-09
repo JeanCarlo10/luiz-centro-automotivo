@@ -21,6 +21,15 @@ type Slide = {
 
 const slides: Slide[] = [
   {
+    src: Hero04,
+    alt: "Hero 04",
+    title: "ALINHAMENTO E\nBALANCEAMENTO",
+    subtitle:
+      "Feitos com precisão para garantir segurança, conforto e desempenho.",
+    positionMobile: "50% 35%",
+    positionDesktop: "50% 50%",
+  },
+  {
     src: Hero02,
     alt: "Hero 02",
     title: "AQUI VOCÊ PODE\nCONFIAR",
@@ -47,15 +56,7 @@ const slides: Slide[] = [
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
   },
-  {
-    src: Hero04,
-    alt: "Hero 04",
-    title: "ALINHAMENTO E\nBALANCEAMENTO",
-    subtitle:
-      "Feitos com precisão para garantir segurança, conforto e desempenho.",
-    positionMobile: "50% 35%",
-    positionDesktop: "50% 50%",
-  },
+
   {
     src: Hero05,
     alt: "Hero 05",
@@ -142,7 +143,7 @@ const HeroCarousel = () => {
                         variants={SlideUp(0.6)}
                         initial="initial"
                         whileInView={"animate"}
-                        className="mt-6 inline-flex items-center cursor-pointer rounded-lg bg-(--primary) px-6 py-3 font-semibold hover:bg-(--primary-medium) transition"
+                        className="mt-6 inline-flex text-white items-center cursor-pointer rounded-lg bg-(--primary) px-6 py-3 font-semibold hover:bg-(--primary-medium) transition"
                       >
                         Agendar Atendimento
                       </motion.button>

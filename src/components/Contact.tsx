@@ -145,7 +145,7 @@ const Contact = () => {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="gap-0.5">
+                      <FormLabel className="gap-0.5 font-semibold">
                         Nome <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
@@ -165,7 +165,7 @@ const Contact = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="gap-0.5">
+                      <FormLabel className="gap-0.5 font-semibold">
                         E-mail <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
@@ -186,7 +186,7 @@ const Contact = () => {
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="gap-0.5">
+                      <FormLabel className="gap-0.5 font-semibold">
                         Telefone <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
@@ -207,7 +207,7 @@ const Contact = () => {
                   name="service"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="gap-0.5">
+                      <FormLabel className="gap-0.5 font-semibold">
                         Serviço <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
@@ -289,7 +289,7 @@ const Contact = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="gap-0.5">
+                      <FormLabel className="gap-0.5 font-semibold">
                         Mensagem <span className="text-(--primary)">*</span>
                       </FormLabel>
                       <FormControl>
