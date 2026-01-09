@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
-import logoImage from "@/assets/logo.webp";
+import logoImage from "@/assets/logo.svg";
 import { motion } from "framer-motion";
 
 const Header = () => {
@@ -61,11 +61,11 @@ const Header = () => {
           <img
             src={logoImage}
             alt="Logo - Luiz Centro Automotivo"
-            width="110"
-            height="70"
-            className="h-auto"
+            width={110}
+            height={70}
             loading="eager"
             decoding="async"
+            className="w-[90px] sm:w-[110px] h-auto"
           />
 
           {/* Desktop Navigation */}
