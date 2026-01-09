@@ -87,6 +87,10 @@ const HeroCarousel = () => {
           effect={"fade"}
           loop
           grabCursor
+          observer={false}
+          observeParents={false}
+          watchSlidesProgress={false}
+          resizeObserver={true}
           autoplay={{ delay: 3500, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           className="w-full h-full"
@@ -102,6 +106,7 @@ const HeroCarousel = () => {
                     object-(--position-mobile)
                     sm:object-(--position-desktop)
                   "
+                  
                   style={
                     {
                       ["--position-mobile" as any]:
@@ -112,6 +117,7 @@ const HeroCarousel = () => {
                   }
                   loading={i === 0 ? "eager" : "lazy"}
                   decoding="async"
+                  fetchPriority="high"
                 />
 
                 <div className="absolute inset-0 flex items-center">

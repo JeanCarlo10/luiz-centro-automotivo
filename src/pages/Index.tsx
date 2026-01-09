@@ -22,7 +22,6 @@ const Index = () => {
         <Suspense fallback={null}>
           <Services />
           <About />
-          {/* <Carousel /> */}
           <Reviews />
           <FAQ />
           <Contact />
