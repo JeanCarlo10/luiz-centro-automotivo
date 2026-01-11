@@ -81,9 +81,25 @@ function WhatsAppDeferred() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    // depois do primeiro paint + atraso (ajuste se quiser)
-    const t = window.setTimeout(() => setShow(true), 2000);
-    return () => window.clearTimeout(t);
+    let timeoutId: ReturnType<typeof window.setTimeout> | undefined;
+
+    if ("requestIdleCallback" in window) {
+      const idleId = (window as any).requestIdleCallback(
+        () => setShow(true),
+        { timeout: 3000 }
+      );
+
+      return () => {
+        (window as any).cancelIdleCallback?.(idleId);
+      };
+    }
+
+    // fallback
+    timeoutId = setTimeout(() => setShow(true), 2000);
+
+    return () => {
+      if (timeoutId) window.clearTimeout(timeoutId);
+    };
   }, []);
 
   if (!show) return null;
@@ -94,6 +110,9 @@ function WhatsAppDeferred() {
     </Suspense>
   );
 }
+
+
+
 
 const Index = () => {
   return (
