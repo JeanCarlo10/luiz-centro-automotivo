@@ -125,24 +125,24 @@ const HeroCarousel = () => {
                     <div className="max-w-xl text-white text-center md:text-left">
                       {/* TITLE */}
 
-                      <motion.h1
-                        variants={SlideUp(0.2)}
-                        initial="initial"
-                        whileInView={"animate"}
+                      <h1
+                        // variants={SlideUp(0.2)}
+                        // initial="initial"
+                        // whileInView={"animate"}
                         className="font-extrabold text-3xl sm:text-4xl lg:text-6xl"
                       >
                         {item.title}
-                      </motion.h1>
+                      </h1>
 
                       {/* SUBTITLE */}
-                      <motion.p
-                        variants={SlideUp(0.4)}
-                        initial="initial"
-                        whileInView={"animate"}
+                      <p
+                        // variants={SlideUp(0.4)}
+                        // initial="initial"
+                        // whileInView={"animate"}
                         className="mt-4 text-sm sm:text-base lg:text-lg text-white/90"
                       >
                         {item.subtitle}
-                      </motion.p>
+                      </p>
 
                       {/* CTA */}
                       <motion.button
