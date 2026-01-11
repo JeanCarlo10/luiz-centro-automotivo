@@ -1,16 +1,99 @@
-import React, { Suspense } from "react";
+// import React, { Suspense } from "react";
+// import Header from "@/components/Header";
+// import Hero from "@/components/Hero";
+
+// // * React.lazy() carrega componentes quando necessário *
+// const Reviews = React.lazy(() => import("@/components/Reviews"));
+// const FAQ = React.lazy(() => import("@/components/FAQ"));
+// const Services = React.lazy(() => import("@/components/Services"));
+// const About = React.lazy(() => import("@/components/About"));
+// const Contact = React.lazy(() => import("@/components/Contact"));
+// const Footer = React.lazy(() => import("@/components/Footer"));
+// const WhatsAppButton = React.lazy(() => import("@/components/WhatsAppButton"));
+
+// const Index = () => {
+//   return (
+//     <div className="min-h-screen flex flex-col overflow-hidden">
+//       <Header />
+
+//       <main>
+//         <Hero />
+//         <Suspense fallback={null}>
+//           <Services />
+//           <About />
+//           <Reviews />
+//           <FAQ />
+//           <Contact />
+//           <Footer />
+//           <WhatsAppButton />
+//         </Suspense>
+//       </main>
+//     </div>
+//   );
+// };
+
+// export default Index;
+
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 
-// * React.lazy() carrega componentes quando necessário *
 const Reviews = React.lazy(() => import("@/components/Reviews"));
 const FAQ = React.lazy(() => import("@/components/FAQ"));
 const Services = React.lazy(() => import("@/components/Services"));
 const About = React.lazy(() => import("@/components/About"));
-// const Carousel = React.lazy(() => import("@/components/Carousel"));
 const Contact = React.lazy(() => import("@/components/Contact"));
 const Footer = React.lazy(() => import("@/components/Footer"));
 const WhatsAppButton = React.lazy(() => import("@/components/WhatsAppButton"));
+
+function LazyOnView({
+  children,
+  rootMargin = "200px",
+}: {
+  children: React.ReactNode;
+  rootMargin?: string;
+}) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShow(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin }
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, [rootMargin]);
+
+  return <div ref={ref}>{show ? children : null}</div>;
+}
+
+function WhatsAppDeferred() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    // depois do primeiro paint + atraso (ajuste se quiser)
+    const t = window.setTimeout(() => setShow(true), 2000);
+    return () => window.clearTimeout(t);
+  }, []);
+
+  if (!show) return null;
+
+  return (
+    <Suspense fallback={null}>
+      <WhatsAppButton />
+    </Suspense>
+  );
+}
 
 const Index = () => {
   return (
@@ -19,18 +102,49 @@ const Index = () => {
 
       <main>
         <Hero />
-        <Suspense fallback={null}>
-          <Services />
-          <About />
-          <Reviews />
-          <FAQ />
-          <Contact />
-          <Footer />
-          <WhatsAppButton />
-        </Suspense>
+
+        <LazyOnView>
+          <Suspense fallback={null}>
+            <Services />
+          </Suspense>
+        </LazyOnView>
+
+        <LazyOnView>
+          <Suspense fallback={null}>
+            <About />
+          </Suspense>
+        </LazyOnView>
+
+        <LazyOnView>
+          <Suspense fallback={null}>
+            <Reviews />
+          </Suspense>
+        </LazyOnView>
+
+        <LazyOnView>
+          <Suspense fallback={null}>
+            <FAQ />
+          </Suspense>
+        </LazyOnView>
+
+        <LazyOnView>
+          <Suspense fallback={null}>
+            <Contact />
+          </Suspense>
+        </LazyOnView>
+
+        <LazyOnView>
+          <Suspense fallback={null}>
+            <Footer />
+          </Suspense>
+        </LazyOnView>
+
+        {/* ✅ carrega depois, fora da cadeia crítica */}
+        <WhatsAppDeferred />
       </main>
     </div>
   );
 };
 
 export default Index;
+
