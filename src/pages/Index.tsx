@@ -36,7 +36,8 @@
 
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+// import Hero from "@/components/Hero";
+const Hero = React.lazy(() => import("@/components/Hero"));
 
 const Reviews = React.lazy(() => import("@/components/Reviews"));
 const FAQ = React.lazy(() => import("@/components/FAQ"));
