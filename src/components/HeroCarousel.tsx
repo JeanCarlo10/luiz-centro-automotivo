@@ -1,3 +1,4 @@
+import React, { useEffect, useMemo, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 // import { motion } from "framer-motion";
@@ -56,7 +57,6 @@ const slides: Slide[] = [
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
   },
-
   {
     src: Hero05,
     alt: "Hero 05",
@@ -77,89 +77,148 @@ const slides: Slide[] = [
   },
 ];
 
+function SlideContent({ item }: { item: Slide }) {
+  const style = useMemo(
+    () =>
+      ({
+        ["--position-mobile" as any]: item.positionMobile ?? "50% 50%",
+        ["--position-desktop" as any]: item.positionDesktop ?? "50% 50%",
+      } as React.CSSProperties),
+    [item.positionMobile, item.positionDesktop]
+  );
+
+  return (
+    <div className="relative w-full h-full">
+      <img
+        src={item.src}
+        alt={item.alt}
+        className="
+          w-full h-full object-cover
+          [object-position:var(--position-mobile)]
+          sm:[object-position:var(--position-desktop)]
+        "
+        style={style}
+        decoding="async"
+      />
+
+      <div className="absolute inset-0 flex items-center">
+        <div className="container mx-auto px-8">
+          <div className="max-w-xl text-white text-center md:text-left">
+            <h1 className="whitespace-pre-line font-extrabold text-3xl sm:text-4xl lg:text-6xl">
+              {item.title}
+            </h1>
+
+            <p className="mt-4 text-sm sm:text-base lg:text-lg text-white/90">
+              {item.subtitle}
+            </p>
+
+            <button
+              className="
+                mt-6 inline-flex items-center cursor-pointer
+                rounded-lg px-6 py-3 font-semibold text-white
+                transition-transform duration-200 hover:scale-105
+                bg-[var(--primary-medium)] hover:bg-[var(--primary-medium)]
+              "
+            >
+              Agendar Atendimento
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const HeroCarousel = () => {
+  const [enhanced, setEnhanced] = useState(false);
+
+  useEffect(() => {
+    const w = window as any;
+
+    // Monta o Swiper quando o browser estiver ocioso (melhora LCP)
+    if ("requestIdleCallback" in window) {
+      const id = w.requestIdleCallback(() => setEnhanced(true), {
+        timeout: 2000,
+      });
+      return () => w.cancelIdleCallback?.(id);
+    }
+
+    const t = setTimeout(() => setEnhanced(true), 700);
+    return () => window.clearTimeout(t);
+  }, []);
+
+  const first = slides[0];
+
   return (
     <section className="w-full">
       <div className="relative w-full h-screen">
-        <Swiper
-          modules={[Autoplay, Pagination, EffectFade]}
-          slidesPerView={1}
-          effect={"fade"}
-          loop
-          grabCursor
-          observer={false}
-          observeParents={false}
-          watchSlidesProgress={false}
-          resizeObserver={true}
-          autoplay={{ delay: 3500, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
-          className="w-full h-full"
-        >
-          {slides.map((item, i) => (
-            <SwiperSlide key={i} className="w-full h-full">
-              <div className="relative w-full h-full">
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  className="
-                    w-full h-full object-cover
-                    object-(--position-mobile)
-                    sm:object-(--position-desktop)
-                  "
-                  
-                  style={
-                    {
-                      ["--position-mobile" as any]:
-                        item.positionMobile ?? "50% 50%",
-                      ["--position-desktop" as any]:
-                        item.positionDesktop ?? "50% 50%",
-                    } as React.CSSProperties
-                  }
-                  loading={i === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                  fetchPriority="high"
-                />
+        {!enhanced ? (
+          // ✅ 1º paint: estático e rápido (LCP melhora muito)
+          <div className="w-full h-full">
+            <img
+              src={first.src}
+              alt={first.alt}
+              className="
+                w-full h-full object-cover
+                [object-position:var(--position-mobile)]
+                sm:[object-position:var(--position-desktop)]
+              "
+              style={
+                {
+                  ["--position-mobile" as any]:
+                    first.positionMobile ?? "50% 50%",
+                  ["--position-desktop" as any]:
+                    first.positionDesktop ?? "50% 50%",
+                } as React.CSSProperties
+              }
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
 
-                <div className="absolute inset-0 flex items-center">
-                  <div className="container mx-auto px-8">
-                    <div className="max-w-xl text-white text-center md:text-left">
-                      {/* TITLE */}
-
-                      <h1
-                        // variants={SlideUp(0.2)}
-                        // initial="initial"
-                        // whileInView={"animate"}
-                        className="font-extrabold text-3xl sm:text-4xl lg:text-6xl"
-                      >
-                        {item.title}
-                      </h1>
-
-                      {/* SUBTITLE */}
-                      <p
-                        // variants={SlideUp(0.4)}
-                        // initial="initial"
-                        // whileInView={"animate"}
-                        className="mt-4 text-sm sm:text-base lg:text-lg text-white/90"
-                      >
-                        {item.subtitle}
-                      </p>
-
-                      {/* CTA */}
-                      <button
-                        // variants={SlideUp(0.6)}
-                        // initial="initial"
-                        // whileInView={"animate"}
-                        className="mt-6 inline-flex text-white items-center cursor-pointer rounded-lg transition bg-(--primary-medium) px-6 py-3 font-semibold hover:bg-(--primary-medium) hover:scale-105"
-                      >
-                        Agendar Atendimento
-                      </button>
-                    </div>
-                  </div>
+            {/* conteúdo do slide 0 */}
+            <div className="absolute inset-0 flex items-center">
+              <div className="container mx-auto px-8">
+                <div className="max-w-xl text-white text-center md:text-left">
+                  <h1 className="whitespace-pre-line font-extrabold text-3xl sm:text-4xl lg:text-6xl">
+                    {first.title}
+                  </h1>
+                  <p className="mt-4 text-sm sm:text-base lg:text-lg text-white/90">
+                    {first.subtitle}
+                  </p>
+                  <button
+                    className="
+                      mt-6 inline-flex items-center cursor-pointer
+                      rounded-lg px-6 py-3 font-semibold text-white
+                      transition-transform duration-200 hover:scale-105
+                      bg-[var(--primary-medium)] hover:bg-[var(--primary-medium)]
+                    "
+                  >
+                    Agendar Atendimento
+                  </button>
                 </div>
               </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+            </div>
+          </div>
+        ) : (
+          // ✅ Depois: Swiper completo
+          <Swiper
+            modules={[Autoplay, Pagination, EffectFade]}
+            slidesPerView={1}
+            effect="fade"
+            loop
+            grabCursor
+            autoplay={{ delay: 3500, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
+            className="w-full h-full"
+          >
+            {slides.map((item, i) => (
+              <SwiperSlide key={i} className="w-full h-full">
+                <SlideContent item={item} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
       </div>
     </section>
   );
