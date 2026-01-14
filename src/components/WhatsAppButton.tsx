@@ -10,7 +10,7 @@ import {
 const WhatsAppButton = () => {
   const openWhatsApp = () => {
     window.open(
-      "https://wa.me/5545999050773?text=Olá, gostaria de agendar um serviço!",
+      "https://wa.me/5545999750730?text=Olá, gostaria de agendar um serviço!",
       "_blank",
       "noopener,noreferrer"
     );
@@ -25,7 +25,6 @@ const WhatsAppButton = () => {
             onClick={openWhatsApp}
             className="fixed z-10 bottom-6 right-6 w-16 h-16 bg-[#25D366] hover:bg-[#20BD5C] rounded-full flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110 will-change-transform"
           >
-            {/* <div className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-20"></div> */}
             <span className="pointer-events-none absolute inset-0 rounded-full bg-green-500/20 animate-ping" />
 
             <FaWhatsapp className="relative z-10 w-8 h-8 text-white" />

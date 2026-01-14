@@ -62,7 +62,7 @@ const Reviews = () => {
           {reviews.map((review, index) => (
             <Card
               key={index}
-              className="bg-(--card) border-(--border) animate-fade-in hover-shadow-custom transition-shadow"
+              className="bg-(--card) border-(--border) hover-shadow-custom transition-shadow"
             >
               <CardContent className="p-6">
                 <div className="flex mb-3">

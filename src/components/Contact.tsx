@@ -86,7 +86,7 @@ const Contact = () => {
     }
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/5545999050773?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/5545999750730?text=${encodedMessage}`, "_blank");
 
     toast.success(
       "Mensagem enviada com sucesso! Entraremos em contato em breve."

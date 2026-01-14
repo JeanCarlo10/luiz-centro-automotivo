@@ -3,12 +3,12 @@ import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 // import { motion } from "framer-motion";
 // import { SlideUp } from "@/animations";
 
-import Hero01 from "@/assets/Hero_01.webp";
-import Hero02 from "@/assets/Hero_02.webp";
-import Hero03 from "@/assets/Hero_03.webp";
-import Hero04 from "@/assets/Hero_04.webp";
-import Hero05 from "@/assets/Hero_05.webp";
-import Hero06 from "@/assets/Hero_06.webp";
+import Hero01 from "@/assets/HERO_01_TEST.webp";
+import Hero02 from "@/assets/Hero_02_TEST.webp";
+import Hero03 from "@/assets/HERO_03_TEST.webp";
+import Hero04 from "@/assets/HERO_04_TEST.webp";
+import Hero05 from "@/assets/Hero_05_TEST.webp";
+import Hero06 from "@/assets/HERO_06_TEST.webp";
 
 type Slide = {
   src: string;
@@ -21,12 +21,12 @@ type Slide = {
 
 const slides: Slide[] = [
   {
-    src: Hero04,
-    alt: "Hero 04",
-    title: "ALINHAMENTO E\nBALANCEAMENTO",
+    src: Hero01,
+    alt: "Hero 01",
+    title: "POTÊNCIA E\nPERFORMANCE",
     subtitle:
-      "Feitos com precisão para garantir segurança, conforto e desempenho.",
-    positionMobile: "50% 35%",
+      "Performance de verdade começa com manutenção precisa, garantindo força, estabilidade e eficiência em cada trajeto.",
+    positionMobile: "50% 40%",
     positionDesktop: "50% 50%",
   },
   {
@@ -39,15 +39,6 @@ const slides: Slide[] = [
     positionDesktop: "50% 50%",
   },
   {
-    src: Hero01,
-    alt: "Hero 01",
-    title: "POTÊNCIA E\nPERFORMANCE",
-    subtitle:
-      "Performance de verdade começa com manutenção precisa, garantindo força, estabilidade e eficiência em cada trajeto.",
-    positionMobile: "50% 40%",
-    positionDesktop: "50% 50%",
-  },
-  {
     src: Hero03,
     alt: "Hero 03",
     title: "MÊCANICA\nEM GERAL",
@@ -56,7 +47,15 @@ const slides: Slide[] = [
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
   },
-
+  {
+    src: Hero04,
+    alt: "Hero 04",
+    title: "ALINHAMENTO E\nBALANCEAMENTO",
+    subtitle:
+      "Feitos com precisão para garantir segurança, conforto e desempenho.",
+    positionMobile: "50% 35%",
+    positionDesktop: "50% 50%",
+  },
   {
     src: Hero05,
     alt: "Hero 05",
@@ -106,7 +105,6 @@ const HeroCarousel = () => {
                     object-(--position-mobile)
                     sm:object-(--position-desktop)
                   "
-                  
                   style={
                     {
                       ["--position-mobile" as any]:
@@ -146,6 +144,11 @@ const HeroCarousel = () => {
 
                       {/* CTA */}
                       <button
+                        onClick={() => {
+                          document
+                            .getElementById("contact")
+                            ?.scrollIntoView({ behavior: "smooth" });
+                        }}
                         // variants={SlideUp(0.6)}
                         // initial="initial"
                         // whileInView={"animate"}
