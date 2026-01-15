@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 // import { motion } from "framer-motion";
 // import { SlideUp } from "@/animations";
 
@@ -81,11 +81,12 @@ const HeroCarousel = () => {
     <section className="w-full">
       <div className="relative w-full h-screen">
         <Swiper
-          modules={[Autoplay, Pagination, EffectFade]}
+          modules={[Autoplay, Pagination, EffectFade, Navigation]}
           slidesPerView={1}
           effect={"fade"}
           loop
           grabCursor
+          navigation
           observer={false}
           observeParents={false}
           watchSlidesProgress={false}
