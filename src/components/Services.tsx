@@ -40,8 +40,8 @@ const services = [
   },
   {
     icon: Droplets,
-    title: "Ar Condicionado",
-    description: "Manutenção, limpeza e recarga do sistema de ar condicionado.",
+    title: "Alinhamento e balanceamento",
+    description: "Feitos com precisão para garantir segurança, conforto e desempenho",
   },
 ];
 

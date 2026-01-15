@@ -4,10 +4,10 @@ import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 // import { SlideUp } from "@/animations";
 
 import Hero01 from "@/assets/HERO_01_TEST.webp";
-import Hero02 from "@/assets/Hero_02_TEST.webp";
-import Hero03 from "@/assets/HERO_03_TEST.webp";
-import Hero04 from "@/assets/HERO_04_TEST.webp";
-import Hero05 from "@/assets/Hero_05_TEST.webp";
+import Hero02 from "@/assets/luiz injeçao eletronica versao final s texto.jpg";
+import Hero03 from "@/assets/card mecanica geral sem texto.jpg";
+import Hero04 from "@/assets/card alinhamento final sem texto.jpg";
+import Hero05 from "@/assets/30 anos versao final sem texto.jpg";
 import Hero06 from "@/assets/HERO_06_TEST.webp";
 
 type Slide = {
