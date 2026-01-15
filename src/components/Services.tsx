@@ -41,7 +41,7 @@ const services = [
   {
     icon: Droplets,
     title: "Alinhamento e balanceamento",
-    description: "Feitos com precisão para garantir segurança, conforto e desempenho",
+    description: "Feitos com precisão para garantir segurança, conforto e desempenho.",
   },
 ];
 

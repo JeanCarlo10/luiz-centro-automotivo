@@ -85,7 +85,6 @@ const HeroCarousel = () => {
           slidesPerView={1}
           effect={"fade"}
           loop
-          grabCursor
           navigation
           observer={false}
           observeParents={false}
