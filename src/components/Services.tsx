@@ -29,9 +29,9 @@ const services = [
   },
   {
     icon: Zap,
-    title: "Sistema Elétrico",
+    title: "Sistema Eletrônico (ABS e Airbag)",
     description:
-      "Reparos em bateria, alternador, motor de arranque e iluminação.",
+      "Diagnóstico e reparo dos sistemas ABS e Airbag, garantindo segurança.",
   },
   {
     icon: Shield,
@@ -41,7 +41,8 @@ const services = [
   {
     icon: Droplets,
     title: "Alinhamento e balanceamento",
-    description: "Feitos com precisão para garantir segurança, conforto e desempenho.",
+    description:
+      "Feitos com precisão para garantir segurança, conforto e desempenho.",
   },
 ];
 

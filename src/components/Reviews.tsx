@@ -58,7 +58,15 @@ const Reviews = () => {
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid">
+          <iframe
+            src="https://9ebcf103b4fa4f9da84504fb23c3f207.elf.site"
+            width="100%"
+            height="430px"
+          ></iframe>
+        </div>
+
+        {/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {reviews.map((review, index) => (
             <Card
               key={index}
@@ -85,7 +93,7 @@ const Reviews = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );

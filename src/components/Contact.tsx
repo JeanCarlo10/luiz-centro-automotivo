@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -51,6 +52,10 @@ const quoteFormSchema = z.object({
 
 type QuoteFormData = z.infer<typeof quoteFormSchema>;
 
+const WHATSAPP_NUMBER = "5545999739942";
+const WHATSAPP_TEXT = "Olá! Gostaria de agendar um atendimento.";
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_TEXT)}`;
+
 const Contact = () => {
   const form = useForm<QuoteFormData>({
     resolver: zodResolver(quoteFormSchema),
@@ -86,7 +91,7 @@ const Contact = () => {
     }
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/5545999750730?text=${encodedMessage}`, "_blank");
+    window.open(`{https://wa.me/5545999050773?text=${encodedMessage}}`, "_blank");
 
     toast.success(
       "Mensagem enviada com sucesso! Entraremos em contato em breve."
@@ -317,6 +322,26 @@ const Contact = () => {
           {/* Contact Info Cards */}
           <div className="flex flex-col gap-8">
             <div className="rounded-lg p-6 shadow-custom flex flex-col gap-8">
+              <div className="flex flex-col md:flex-row">
+                <div className="min-w-12 min-h-12 w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mr-4 mb-1">
+                  <FaWhatsapp className="w-6 h-6 text-white" />
+                </div>
+
+                <div className="flex flex-col">
+                  <span className="text-lg font-semibold">WhatsApp</span>
+
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-base font-medium hover:underline"
+                    aria-label="Abrir conversa no WhatsApp"
+                  >
+                    (45) 99973-9942
+                  </a>
+                </div>
+              </div>
+
               <div className="flex flex-col md:flex-row">
                 <div className="min-w-12 min-h-12 w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mr-4 mb-1">
                   <Phone className="w-6 h-6 text-white" />
