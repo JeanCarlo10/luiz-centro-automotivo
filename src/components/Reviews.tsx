@@ -1,5 +1,3 @@
-import { Star } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { SlideUp } from "@/animations";
 
