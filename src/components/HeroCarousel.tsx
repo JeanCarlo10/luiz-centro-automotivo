@@ -31,7 +31,7 @@ const slides: Slide[] = [
     positionMobile: "20% 40%",
     positionDesktop: "50% 50%",
     buttonVariant: "yellow",
-    textVariant: "dark",
+    textVariant: "light",
   },
   {
     src: Hero02,
@@ -114,8 +114,8 @@ const HeroCarousel = () => {
 
             const buttonClass =
               item.buttonVariant === "yellow"
-                ? "bg-yellow-400 text-black hover:bg-yellow-300"
-                : "bg-(--primary-medium) text-white hover:bg-(--primary)";
+                ? "bg-(--yellow) text-black hover:bg-yellow-400"
+                : "bg-(--primary) text-white hover:bg-(--primary-medium)";
 
             return (
               <SwiperSlide key={i} className="w-full h-full">
