@@ -132,7 +132,7 @@ const HeroCarousel = () => {
                   />
 
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/10" />
+                  {/* <div className="absolute inset-0 bg-black/10" /> */}
 
                   <div className="absolute inset-0 flex items-center">
                     <div className="container mx-auto px-8">
@@ -143,7 +143,7 @@ const HeroCarousel = () => {
                         </h1>
 
                         {/* SUBTITLE */}
-                        <p className="mt-4 text-sm sm:text-base lg:text-lg text-white/90">
+                        <p className="mt-4 text-sm sm:text-base lg:text-lg text-white font-semibold">
                           {item.subtitle}
                         </p>
 
