@@ -3,12 +3,12 @@ import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 // import { motion } from "framer-motion";
 // import { SlideUp } from "@/animations";
 
-import Hero01 from "@/assets/HERO_01_TEST.webp";
-import Hero02 from "@/assets/luiz injeçao eletronica versao final s texto.jpg";
-import Hero03 from "@/assets/card mecanica geral sem texto.jpg";
-import Hero04 from "@/assets/card alinhamento final sem texto.jpg";
-import Hero05 from "@/assets/30 anos versao final sem texto.jpg";
-import Hero06 from "@/assets/HERO_06_TEST.webp";
+import Hero01 from "@/assets/HERO_01.webp";
+import Hero02 from "@/assets/HERO_02.webp";
+import Hero03 from "@/assets/HERO_03.webp";
+import Hero04 from "@/assets/HERO_04.webp";
+import Hero05 from "@/assets/HERO_05.webp";
+import Hero06 from "@/assets/HERO_06.webp";
 
 type Slide = {
   src: string;
@@ -17,7 +17,8 @@ type Slide = {
   subtitle: string;
   positionMobile?: string;
   positionDesktop?: string;
-  ctaVariant?: "yellow" | "red";
+  buttonVariant?: "yellow" | "red";
+  textVariant?: "light" | "dark";
 };
 
 const slides: Slide[] = [
@@ -29,7 +30,8 @@ const slides: Slide[] = [
       "Performance de verdade começa com manutenção precisa, garantindo força, estabilidade e eficiência em cada trajeto.",
     positionMobile: "20% 40%",
     positionDesktop: "50% 50%",
-    ctaVariant: "yellow",
+    buttonVariant: "yellow",
+    textVariant: "light",
   },
   {
     src: Hero02,
@@ -39,7 +41,8 @@ const slides: Slide[] = [
       "Experiência, confiança e tecnologia para cuidar do seu veículo com a qualidade que você merece.",
     positionMobile: "25% 35%",
     positionDesktop: "50% 50%",
-    ctaVariant: "red",
+    buttonVariant: "red",
+    textVariant: "dark",
   },
   {
     src: Hero03,
@@ -49,7 +52,8 @@ const slides: Slide[] = [
       "Diagnóstico preciso e atendimento de confiança. Cuidamos do seu veículo com tecnologia, experiência e atenção a cada detalhe.",
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
-    ctaVariant: "red",
+    buttonVariant: "red",
+    textVariant: "light",
   },
   {
     src: Hero04,
@@ -59,7 +63,8 @@ const slides: Slide[] = [
       "Feitos com precisão para garantir segurança, conforto e desempenho.",
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
-    ctaVariant: "red",
+    buttonVariant: "red",
+    textVariant: "light",
   },
   {
     src: Hero05,
@@ -69,7 +74,8 @@ const slides: Slide[] = [
       "Construímos uma trajetória sólida no cuidado automotivo, com experiência que evolui a cada geração e compromisso com a qualidade.",
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
-    ctaVariant: "red",
+    buttonVariant: "red",
+    textVariant: "light",
   },
   {
     src: Hero06,
@@ -79,7 +85,8 @@ const slides: Slide[] = [
       "Diagnóstico avançado e precisão para garantir desempenho e eficiência da injeção eletrônica.",
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
-    ctaVariant: "red",
+    buttonVariant: "red",
+    textVariant: "dark",
   },
 ];
 
@@ -102,8 +109,11 @@ const HeroCarousel = () => {
           className="w-full h-full"
         >
           {slides.map((item, i) => {
-            const ctaClass =
-              item.ctaVariant === "yellow"
+            const textClass =
+              item.textVariant === "dark" ? "text-black" : "text-white";
+
+            const buttonClass =
+              item.buttonVariant === "yellow"
                 ? "bg-yellow-400 text-black hover:bg-yellow-300"
                 : "bg-(--primary-medium) text-white hover:bg-(--primary)";
 
@@ -133,14 +143,14 @@ const HeroCarousel = () => {
 
                   <div className="absolute inset-0 flex items-center">
                     <div className="container mx-auto px-8">
-                      <div className="max-w-xl text-white text-center md:text-left">
+                      <div className="max-w-xl text-center md:text-left">
                         {/* TITLE */}
-                        <h1 className="font-extrabold text-3xl sm:text-4xl lg:text-6xl whitespace-pre-line">
+                        <h1 className={`font-extrabold text-3xl sm:text-4xl lg:text-6xl whitespace-pre-line ${textClass}`}>
                           {item.title}
                         </h1>
 
                         {/* SUBTITLE */}
-                        <p className="mt-8 text-sm sm:text-base lg:text-lg text-white font-semibold">
+                        <p className={`mt-8 text-sm sm:text-base lg:text-l font-semibold ${textClass}`}>
                           {item.subtitle}
                         </p>
 
@@ -151,7 +161,7 @@ const HeroCarousel = () => {
                               .getElementById("contact")
                               ?.scrollIntoView({ behavior: "smooth" });
                           }}
-                          className={`mt-8 inline-flex items-center cursor-pointer rounded-lg transition px-6 py-3 font-semibold hover:scale-105 ${ctaClass}`}
+                          className={`mt-8 inline-flex items-center cursor-pointer rounded-lg transition px-6 py-3 font-semibold hover:scale-105 ${buttonClass}`}
                         >
                           Agendar Atendimento
                         </button>
