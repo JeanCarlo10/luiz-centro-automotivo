@@ -3,7 +3,7 @@ import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 // import { motion } from "framer-motion";
 // import { SlideUp } from "@/animations";
 
-import Hero01 from "@/assets/HERO_01.webp";
+import Hero01 from "@/assets/HERO_01_jean.webp";
 import Hero02 from "@/assets/HERO_02.webp";
 import Hero03 from "@/assets/HERO_03.webp";
 import Hero04 from "@/assets/HERO_04.webp";
