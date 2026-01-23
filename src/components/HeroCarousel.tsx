@@ -31,7 +31,7 @@ const slides: Slide[] = [
     positionMobile: "20% 40%",
     positionDesktop: "50% 50%",
     buttonVariant: "yellow",
-    textVariant: "light",
+    textVariant: "dark",
   },
   {
     src: Hero02,
@@ -71,7 +71,7 @@ const slides: Slide[] = [
     alt: "Hero 05",
     title: "+30 ANOS DE\nHISTÓRIA",
     subtitle:
-      "Construímos uma trajetória sólida no cuidado automotivo, com experiência que evolui a cada geração e compromisso com a qualidade.",
+      "Uma trajetória sólida no cuidado automotivo, com experiência e compromisso com a qualidade.",
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
     buttonVariant: "red",
