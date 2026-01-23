@@ -83,7 +83,7 @@ const slides: Slide[] = [
     title: "INJEÇÃO\nELETRÔNICA",
     subtitle:
       "Diagnóstico avançado e precisão para garantir desempenho e eficiência da injeção eletrônica.",
-    positionMobile: "50% 35%",
+    positionMobile: "25% 35%",
     positionDesktop: "50% 50%",
     buttonVariant: "red",
     textVariant: "dark",
