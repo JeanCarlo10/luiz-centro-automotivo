@@ -1,36 +1,41 @@
 import { motion } from "framer-motion";
 import { SlideUp } from "@/animations";
+import {
+  Card,
+  CardContent,
+} from "@/components/ui/card";
+import { Star } from "lucide-react";
 
-// const reviews = [
-//   {
-//     name: "João Silva",
-//     rating: 5,
-//     comment:
-//       "Excelente atendimento! Profissionais muito competentes e preço justo. Recomendo!",
-//     date: "Há 2 semanas",
-//   },
-//   {
-//     name: "Maria Santos",
-//     rating: 5,
-//     comment:
-//       "Sempre levo meu carro aqui. Serviço de qualidade e muita transparência no diagnóstico.",
-//     date: "Há 1 mês",
-//   },
-//   {
-//     name: "Pedro Oliveira",
-//     rating: 5,
-//     comment:
-//       "Melhor oficina da região! Resolveram um problema que outros mecânicos não conseguiram.",
-//     date: "Há 3 semanas",
-//   },
-//   {
-//     name: "Ana Costa",
-//     rating: 5,
-//     comment:
-//       "Atendimento impecável e muito profissional. Meu carro ficou perfeito!",
-//     date: "Há 1 semana",
-//   },
-// ];
+const reviews = [
+  {
+    name: "João Silva",
+    rating: 5,
+    comment:
+      "Excelente atendimento! Profissionais muito competentes e preço justo. Recomendo!",
+    date: "Há 2 semanas",
+  },
+  {
+    name: "Maria Santos",
+    rating: 5,
+    comment:
+      "Sempre levo meu carro aqui. Serviço de qualidade e muita transparência no diagnóstico.",
+    date: "Há 1 mês",
+  },
+  {
+    name: "Pedro Oliveira",
+    rating: 5,
+    comment:
+      "Melhor oficina da região! Resolveram um problema que outros mecânicos não conseguiram.",
+    date: "Há 3 semanas",
+  },
+  {
+    name: "Ana Costa",
+    rating: 5,
+    comment:
+      "Atendimento impecável e muito profissional. Meu carro ficou perfeito!",
+    date: "Há 1 semana",
+  },
+];
 
 const Reviews = () => {
   return (
@@ -56,15 +61,15 @@ const Reviews = () => {
           </motion.p>
         </div>
 
-        <div className="grid">
+        {/* <div className="grid">
           <iframe
             src="https://9ebcf103b4fa4f9da84504fb23c3f207.elf.site"
             width="100%"
             height="430px"
           ></iframe>
-        </div>
+        </div> */}
 
-        {/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {reviews.map((review, index) => (
             <Card
               key={index}
@@ -91,7 +96,7 @@ const Reviews = () => {
               </CardContent>
             </Card>
           ))}
-        </div> */}
+        </div>
       </div>
     </section>
   );
