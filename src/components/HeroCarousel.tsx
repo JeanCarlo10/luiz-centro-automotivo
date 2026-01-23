@@ -3,12 +3,12 @@ import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 // import { motion } from "framer-motion";
 // import { SlideUp } from "@/animations";
 
-import Hero01 from "@/assets/HERO_01_jean.webp";
-import Hero02 from "@/assets/HERO_02.webp";
-import Hero03 from "@/assets/HERO_03.webp";
-import Hero04 from "@/assets/HERO_04.webp";
-import Hero05 from "@/assets/HERO_05.webp";
-import Hero06 from "@/assets/HERO_06.webp";
+import Hero01 from "@/assets/HERO_01_.webp";
+import Hero02 from "@/assets/HERO_02_.webp";
+import Hero03 from "@/assets/HERO_03_.webp";
+import Hero04 from "@/assets/HERO_04_.webp";
+import Hero05 from "@/assets/HERO_05_.webp";
+import Hero06 from "@/assets/HERO_06_.webp";
 
 type Slide = {
   src: string;
