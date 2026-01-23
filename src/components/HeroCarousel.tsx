@@ -27,7 +27,7 @@ const slides: Slide[] = [
     title: "POTÊNCIA E\nPERFORMANCE",
     subtitle:
       "Performance de verdade começa com manutenção precisa, garantindo força, estabilidade e eficiência em cada trajeto.",
-    positionMobile: "50% 40%",
+    positionMobile: "20% 40%",
     positionDesktop: "50% 50%",
     ctaVariant: "yellow",
   },
@@ -131,9 +131,6 @@ const HeroCarousel = () => {
                     fetchPriority="high"
                   />
 
-                  {/* Overlay */}
-                  {/* <div className="absolute inset-0 bg-black/10" /> */}
-
                   <div className="absolute inset-0 flex items-center">
                     <div className="container mx-auto px-8">
                       <div className="max-w-xl text-white text-center md:text-left">
@@ -143,7 +140,7 @@ const HeroCarousel = () => {
                         </h1>
 
                         {/* SUBTITLE */}
-                        <p className="mt-4 text-sm sm:text-base lg:text-lg text-white font-semibold">
+                        <p className="mt-8 text-sm sm:text-base lg:text-lg text-white font-semibold">
                           {item.subtitle}
                         </p>
 
@@ -154,7 +151,7 @@ const HeroCarousel = () => {
                               .getElementById("contact")
                               ?.scrollIntoView({ behavior: "smooth" });
                           }}
-                          className={`mt-6 inline-flex items-center cursor-pointer rounded-lg transition px-6 py-3 font-semibold hover:scale-105 ${ctaClass}`}
+                          className={`mt-8 inline-flex items-center cursor-pointer rounded-lg transition px-6 py-3 font-semibold hover:scale-105 ${ctaClass}`}
                         >
                           Agendar Atendimento
                         </button>

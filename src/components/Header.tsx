@@ -46,7 +46,7 @@ const Header = () => {
 
   return (
     <header
-      className={`h-24 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`h-30 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? "bg-(--secondary)" : "bg-transparent"
       }`}
     >
@@ -55,7 +55,7 @@ const Header = () => {
           initial={{ y: -100 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex items-center justify-between h-24"
+          className="flex items-center justify-between h-30"
         >
           {/* Logo */}
           <img
@@ -65,7 +65,7 @@ const Header = () => {
             height={70}
             loading="eager"
             decoding="async"
-            className="w-[90px] sm:w-[110px] h-auto"
+            className="w-[130px] sm:w-[150px] h-auto"
           />
 
           {/* Desktop Navigation */}

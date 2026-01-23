@@ -1,4 +1,4 @@
-import { Wrench, Settings, Gauge, Zap, Shield, Droplets } from "lucide-react";
+import { Wrench, Settings, Activity, Disc3, Move, ShieldCheck  } from "lucide-react";
 import {
   Card,
   CardHeader,
@@ -22,24 +22,24 @@ const services = [
       "Diagnóstico e conserto de motor, câmbio, suspensão e outros sistemas.",
   },
   {
-    icon: Gauge,
+    icon: Activity,
     title: "Injeção Eletrônica",
     description:
       "Análise computadorizada e regulagem do sistema de injeção eletrônica.",
   },
   {
-    icon: Zap,
+    icon: ShieldCheck,
     title: "Sistema Eletrônico (ABS e Airbag)",
     description:
       "Diagnóstico e reparo dos sistemas ABS e Airbag, garantindo segurança.",
   },
   {
-    icon: Shield,
+    icon: Disc3,
     title: "Freios e Suspensão",
     description: "Troca de pastilhas, discos, amortecedores e alinhamento.",
   },
   {
-    icon: Droplets,
+    icon: Move,
     title: "Alinhamento e balanceamento",
     description:
       "Feitos com precisão para garantir segurança, conforto e desempenho.",
