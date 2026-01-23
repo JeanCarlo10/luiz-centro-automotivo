@@ -85,13 +85,15 @@ const Contact = () => {
 
     let message;
     if (data.service === "outro") {
-      message = `Olá!\n\nNome: ${data.name}\nEmail: ${data.email}\nTelefone: ${data.phone}\nServiço: ${serviceText}\nMensagem: ${data.message}`;
+      message = `Olá!\n\nNome: ${data.name}\nE-mail: ${data.email}\nTelefone: ${data.phone}\nServiço: ${serviceText}\nMensagem: ${data.message}`;
     } else {
-      message = `Olá! Gostaria de solicitar um orçamento:\n\nNome: ${data.name}\nEmail: ${data.email}\nTelefone: ${data.phone}\nServiço: ${serviceText}\nMensagem: ${data.message}`;
+      message = `Olá! Gostaria de solicitar um orçamento:\n\nNome: ${data.name}\nE-mail: ${data.email}\nTelefone: ${data.phone}\nServiço: ${serviceText}\nMensagem: ${data.message}`;
     }
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`{https://wa.me/5545999050773?text=${encodedMessage}}`, "_blank");
+
+    const WHATSAPP_CONTACT = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+    window.open(WHATSAPP_CONTACT, "_blank", "noopener,noreferrer");
 
     toast.success(
       "Mensagem enviada com sucesso! Entraremos em contato em breve."
@@ -301,7 +303,7 @@ const Contact = () => {
                         <Textarea
                           {...field}
                           placeholder="Descreva o problema ou serviço desejado..."
-                          className="min-h-[100px] border border-(--input) focus:border-(--primary) focus:ring-2 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
+                          className="min-h-[225px] border border-(--input) focus:border-(--primary) focus:ring-2 focus:ring-(--primary) focus:outline-none h-10 px-3 py-2 shadow-none rounded-md w-full"
                         />
                       </FormControl>
                       <FormMessage className="text-(--primary)" />

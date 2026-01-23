@@ -17,6 +17,7 @@ type Slide = {
   subtitle: string;
   positionMobile?: string;
   positionDesktop?: string;
+  ctaVariant?: "yellow" | "red";
 };
 
 const slides: Slide[] = [
@@ -28,6 +29,7 @@ const slides: Slide[] = [
       "Performance de verdade começa com manutenção precisa, garantindo força, estabilidade e eficiência em cada trajeto.",
     positionMobile: "50% 40%",
     positionDesktop: "50% 50%",
+    ctaVariant: "yellow",
   },
   {
     src: Hero02,
@@ -35,8 +37,9 @@ const slides: Slide[] = [
     title: "AQUI VOCÊ PODE\nCONFIAR",
     subtitle:
       "Experiência, confiança e tecnologia para cuidar do seu veículo com a qualidade que você merece.",
-    positionMobile: "55% 35%",
+    positionMobile: "25% 35%",
     positionDesktop: "50% 50%",
+    ctaVariant: "red",
   },
   {
     src: Hero03,
@@ -46,6 +49,7 @@ const slides: Slide[] = [
       "Diagnóstico preciso e atendimento de confiança. Cuidamos do seu veículo com tecnologia, experiência e atenção a cada detalhe.",
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
+    ctaVariant: "red",
   },
   {
     src: Hero04,
@@ -55,6 +59,7 @@ const slides: Slide[] = [
       "Feitos com precisão para garantir segurança, conforto e desempenho.",
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
+    ctaVariant: "red",
   },
   {
     src: Hero05,
@@ -64,6 +69,7 @@ const slides: Slide[] = [
       "Construímos uma trajetória sólida no cuidado automotivo, com experiência que evolui a cada geração e compromisso com a qualidade.",
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
+    ctaVariant: "red",
   },
   {
     src: Hero06,
@@ -73,6 +79,7 @@ const slides: Slide[] = [
       "Diagnóstico avançado e precisão para garantir desempenho e eficiência da injeção eletrônica.",
     positionMobile: "50% 35%",
     positionDesktop: "50% 50%",
+    ctaVariant: "red",
   },
 ];
 
@@ -83,85 +90,81 @@ const HeroCarousel = () => {
         <Swiper
           modules={[Autoplay, Pagination, EffectFade, Navigation]}
           slidesPerView={1}
-          effect={"fade"}
+          effect="fade"
           loop
           navigation
           observer={false}
           observeParents={false}
           watchSlidesProgress={false}
-          resizeObserver={true}
+          resizeObserver
           autoplay={{ delay: 3500, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           className="w-full h-full"
         >
-          {slides.map((item, i) => (
-            <SwiperSlide key={i} className="w-full h-full">
-              <div className="relative w-full h-full">
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  className="
-                    w-full h-full object-cover
-                    object-(--position-mobile)
-                    sm:object-(--position-desktop)
-                  "
-                  style={
-                    {
-                      ["--position-mobile" as any]:
-                        item.positionMobile ?? "50% 50%",
-                      ["--position-desktop" as any]:
-                        item.positionDesktop ?? "50% 50%",
-                    } as React.CSSProperties
-                  }
-                  loading={i === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                  fetchPriority="high"
-                />
+          {slides.map((item, i) => {
+            const ctaClass =
+              item.ctaVariant === "yellow"
+                ? "bg-yellow-400 text-black hover:bg-yellow-300"
+                : "bg-(--primary-medium) text-white hover:bg-(--primary)";
 
-                <div className="absolute inset-0 flex items-center">
-                  <div className="container mx-auto px-8">
-                    <div className="max-w-xl text-white text-center md:text-left">
-                      {/* TITLE */}
+            return (
+              <SwiperSlide key={i} className="w-full h-full">
+                <div className="relative w-full h-full">
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="
+                      w-full h-full object-cover
+                      object-(--position-mobile)
+                      sm:object-(--position-desktop)
+                    "
+                    style={
+                      {
+                        ["--position-mobile" as any]:
+                          item.positionMobile ?? "50% 50%",
+                        ["--position-desktop" as any]:
+                          item.positionDesktop ?? "50% 50%",
+                      } as React.CSSProperties
+                    }
+                    loading={i === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    fetchPriority="high"
+                  />
 
-                      <h1
-                        // variants={SlideUp(0.2)}
-                        // initial="initial"
-                        // whileInView={"animate"}
-                        className="font-extrabold text-3xl sm:text-4xl lg:text-6xl"
-                      >
-                        {item.title}
-                      </h1>
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-black/10" />
 
-                      {/* SUBTITLE */}
-                      <p
-                        // variants={SlideUp(0.4)}
-                        // initial="initial"
-                        // whileInView={"animate"}
-                        className="mt-4 text-sm sm:text-base lg:text-lg text-white/90"
-                      >
-                        {item.subtitle}
-                      </p>
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="container mx-auto px-8">
+                      <div className="max-w-xl text-white text-center md:text-left">
+                        {/* TITLE */}
+                        <h1 className="font-extrabold text-3xl sm:text-4xl lg:text-6xl whitespace-pre-line">
+                          {item.title}
+                        </h1>
 
-                      {/* CTA */}
-                      <button
-                        onClick={() => {
-                          document
-                            .getElementById("contact")
-                            ?.scrollIntoView({ behavior: "smooth" });
-                        }}
-                        // variants={SlideUp(0.6)}
-                        // initial="initial"
-                        // whileInView={"animate"}
-                        className="mt-6 inline-flex text-white items-center cursor-pointer rounded-lg transition bg-(--primary-medium) px-6 py-3 font-semibold hover:bg-(--primary-medium) hover:scale-105"
-                      >
-                        Agendar Atendimento
-                      </button>
+                        {/* SUBTITLE */}
+                        <p className="mt-4 text-sm sm:text-base lg:text-lg text-white/90">
+                          {item.subtitle}
+                        </p>
+
+                        {/* CTA */}
+                        <button
+                          onClick={() => {
+                            document
+                              .getElementById("contact")
+                              ?.scrollIntoView({ behavior: "smooth" });
+                          }}
+                          className={`mt-6 inline-flex items-center cursor-pointer rounded-lg transition px-6 py-3 font-semibold hover:scale-105 ${ctaClass}`}
+                        >
+                          Agendar Atendimento
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
     </section>
