@@ -1,7 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
-// import { motion } from "framer-motion";
-// import { SlideUp } from "@/animations";
 
 import Hero01 from "@/assets/HERO_01_.webp";
 import Hero02 from "@/assets/HERO_02_.webp";

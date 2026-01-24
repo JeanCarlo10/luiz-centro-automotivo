@@ -1,35 +1,76 @@
 import { useEffect, useMemo, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
 import { SlideUp } from "@/animations";
-import { Card, CardContent } from "@/components/ui/card";
-import { Star } from "lucide-react";
+import GoogleLogo from "@/assets/google.svg";
+import { Star, X } from "lucide-react";
 
 type GoogleReview = {
   author_name: string;
   rating: number;
   text: string;
   relative_time_description?: string;
+  profile_photo_url?: string;
   time?: number;
 };
 
 const PLACE_ID = "ChIJz0VV0AyQ9pQRchsim8DeHPg";
+const GOOGLE_REVIEW_URL =
+  "https://search.google.com/local/writereview?placeid=" + PLACE_ID;
 
-function Stars({ rating }: { rating: number }) {
-  const full = Math.round(rating); // arredonda para ficar bonito (ex: 4.6 => 5)
+function Stars({ rating, size = 18 }: { rating: number; size?: number }) {
+  const fullStars = Math.floor(rating);
+  const decimal = rating - fullStars;
+  const hasHalf = decimal >= 0.25 && decimal < 0.75;
+  const extraFull = decimal >= 0.75 ? 1 : 0;
+
+  const filled = Math.min(5, fullStars + extraFull);
+  const empty = 5 - filled - (hasHalf ? 1 : 0);
+
+  const starClass = `text-[var(--primary)]`;
+  const emptyClass = `text-neutral-300`;
+
   return (
-    <div className="flex mb-3">
-      {Array.from({ length: 5 }).map((_, i) => (
+    <div className="flex items-center gap-0.5">
+      {Array.from({ length: filled }).map((_, i) => (
         <Star
-          key={i}
-          className={`w-5 h-5 ${
-            i < full
-              ? "fill-primary text-(--primary)"
-              : "text-(--muted-foreground)"
-          }`}
+          key={`full-${i}`}
+          style={{ width: size, height: size }}
+          className={`fill-[var(--primary)] ${starClass}`}
+        />
+      ))}
+
+      {hasHalf && (
+        <span
+          className="relative inline-block"
+          style={{ width: size, height: size }}
+        >
+          <Star style={{ width: size, height: size }} className={emptyClass} />
+          <span className="absolute inset-0 overflow-hidden w-1/2">
+            <Star
+              style={{ width: size, height: size }}
+              className={`fill-[var(--primary)] ${starClass}`}
+            />
+          </span>
+        </span>
+      )}
+
+      {Array.from({ length: empty }).map((_, i) => (
+        <Star
+          key={`empty-${i}`}
+          style={{ width: size, height: size }}
+          className={emptyClass}
         />
       ))}
     </div>
   );
+}
+
+function clampText(text: string, maxChars = 120) {
+  const t = (text || "").trim();
+  if (t.length <= maxChars) return { short: t, needsMore: false };
+  return { short: t.slice(0, maxChars).trimEnd() + "...", needsMore: true };
 }
 
 const Reviews = () => {
@@ -37,6 +78,9 @@ const Reviews = () => {
   const [ratingAvg, setRatingAvg] = useState<number | null>(null);
   const [totalRatings, setTotalRatings] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState<GoogleReview | null>(null);
 
   const hasGoogle = useMemo(
     () => typeof window !== "undefined" && (window as any).google,
@@ -61,7 +105,6 @@ const Reviews = () => {
           setLoading(false);
 
           if (status !== g.maps.places.PlacesServiceStatus.OK || !place) {
-            // Se falhar, deixa vazio e evita quebrar o layout
             setReviews([]);
             return;
           }
@@ -73,14 +116,10 @@ const Reviews = () => {
               : null
           );
 
-          // Reviews podem vir vazias dependendo do Google.
           const list: GoogleReview[] = Array.isArray(place.reviews)
             ? place.reviews
             : [];
-
-          // Ordena por mais recentes (quando houver "time")
           list.sort((a, b) => (b.time ?? 0) - (a.time ?? 0));
-
           setReviews(list);
         }
       );
@@ -88,9 +127,8 @@ const Reviews = () => {
       return true;
     };
 
-    // Tenta agora; se o script ainda não carregou, tenta de novo algumas vezes
     let attempts = 0;
-    const maxAttempts = 30; // ~6s (30 * 200ms)
+    const maxAttempts = 30;
     const interval = setInterval(() => {
       attempts += 1;
       const ok = tryLoad();
@@ -103,15 +141,29 @@ const Reviews = () => {
     return () => clearInterval(interval);
   }, [hasGoogle]);
 
+  // Fecha modal com ESC
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    if (open) window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const openModal = (r: GoogleReview) => {
+    setSelected(r);
+    setOpen(true);
+  };
+
   return (
     <section id="avaliacoes" className="py-20 bg-(--background)">
       <div className="container mx-auto px-6 md:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <motion.h2
             variants={SlideUp(0.2)}
             initial="initial"
             whileInView={"animate"}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-4xl md:text-5xl font-bold mb-3"
           >
             O Que Nossos{" "}
             <span className="text-(--primary)">Clientes Dizem</span>
@@ -125,158 +177,169 @@ const Reviews = () => {
           >
             Avaliações reais de clientes satisfeitos com nossos serviços
           </motion.p>
-
-          {/* Nota média */}
-          {!loading && ratingAvg !== null && (
-            <div className="mt-5 flex items-center justify-center gap-2 text-(--foreground)">
-              <span className="font-semibold">⭐ {ratingAvg.toFixed(1)}</span>
-              {totalRatings !== null && (
-                <span className="text-(--muted-foreground)">
-                  ({totalRatings} avaliações)
-                </span>
-              )}
-            </div>
-          )}
         </div>
 
-        {/* Estado de carregamento */}
+        <div className="mb-8 flex flex-col gap-4 rounded-2xl bg-neutral-100 p-5 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col">
+            <div className="flex items-center gap-3">
+              <img
+                src={GoogleLogo}
+                alt="Google"
+                className="h-8 w-auto"
+                loading="lazy"
+              />
+              <span className="text-lg font-semibold text-black">
+                Avaliações
+              </span>
+            </div>
+
+            {ratingAvg !== null && (
+              <div className="mt-2 flex items-center gap-2">
+                <span className="text-3xl font-bold text-black">
+                  {ratingAvg.toFixed(1)}
+                </span>
+
+                <Stars rating={ratingAvg} size={20} />
+
+                {totalRatings !== null && (
+                  <span className="text-sm text-neutral-600">
+                    ({totalRatings})
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
+
+          <a
+            href={GOOGLE_REVIEW_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="md:ml-auto inline-flex items-center justify-center rounded-full bg-red-500 px-6 py-2 text-white font-semibold hover:bg-red-600 transition"
+          >
+            Avalie-nos no Google
+          </a>
+        </div>
+
         {loading && (
           <div className="text-center text-(--muted-foreground)">
             Carregando avaliações...
           </div>
         )}
 
-        {/* Lista */}
-        {!loading && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {reviews.slice(0, 4).map((review, index) => (
-              <Card
-                key={index}
-                className="bg-(--card) border-(--border) hover-shadow-custom transition-shadow"
-              >
-                <CardContent className="p-6">
-                  <Stars rating={review.rating ?? 0} />
-
-                  <p className="text-(--foreground) mb-4">
-                    {review.text?.trim()
-                      ? review.text
-                      : "Avaliação enviada no Google."}
-                  </p>
-
-                  <div className="border-t border-border pt-4">
-                    <p className="font-semibold text-(--foreground)">
-                      {review.author_name || "Cliente"}
-                    </p>
-                    <p className="text-sm text-(--muted-foreground)">
-                      {review.relative_time_description || ""}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-
-            {/* Fallback se vier vazio */}
-            {reviews.length === 0 && (
-              <div className="col-span-full text-center text-(--muted-foreground)">
-                Não foi possível carregar as avaliações agora. Tente novamente
-                em instantes.
-              </div>
-            )}
+        {!loading && reviews.length === 0 && (
+          <div className="text-center text-(--muted-foreground)">
+            Não foi possível carregar as avaliações agora.
           </div>
         )}
+
+        {!loading && reviews.length > 0 && (
+          <Swiper
+            className="pagination-bullet-review"
+            modules={[Pagination, Autoplay]}
+            grabCursor={true}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 4500, disableOnInteraction: false }}
+            spaceBetween={16}
+            breakpoints={{
+              0: { slidesPerView: 1.1 },
+              640: { slidesPerView: 2.2 },
+              1024: { slidesPerView: 4 },
+            }}
+          >
+            {reviews.map((r, idx) => {
+              const { short, needsMore } = clampText(r.text || "", 220);
+
+              return (
+                <SwiperSlide key={idx} className="pb-10">
+                  <div className="h-[300px] bg-neutral-100 rounded-2xl bg-(--card) p-5 shadow-sm flex flex-col">
+                    <div className="mb-4 flex items-center gap-3">
+                      <img
+                        src={r.profile_photo_url || "/avatar-placeholder.png"}
+                        alt={`Foto de ${r.author_name}`}
+                        className="w-10 h-10 rounded-full object-cover"
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                      />
+
+                      <div className="min-w-0">
+                        <p className="font-semibold text-(--foreground) truncate">
+                          {r.author_name || "Cliente"}
+                        </p>
+                        <p className="text-xs text-(--muted-foreground)">
+                          {r.relative_time_description || ""}
+                        </p>
+                      </div>
+                    </div>
+
+                    <Stars rating={r.rating ?? 0} />
+
+                    <div className="mt-3 flex-1">
+                      <p className="text-(--foreground) text-sm leading-relaxed">
+                        {short}
+                      </p>
+
+                      {needsMore && (
+                        <button
+                          onClick={() => openModal(r)}
+                          className="mt-2 text-sm font-semibold text-(--primary) hover:underline cursor-pointer"
+                        >
+                          Ler mais
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        )}
       </div>
+
+      {/* Modal (popup) */}
+      {open && selected && (
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 px-4"
+          onMouseDown={(e) => {
+            if (e.target === e.currentTarget) setOpen(false);
+          }}
+        >
+          <div className="w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl relative">
+            <button
+              onClick={() => setOpen(false)}
+              className="absolute right-4 top-4 p-2 rounded-full hover:bg-black/5 transition"
+              aria-label="Fechar"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src={selected.profile_photo_url || "/avatar-placeholder.png"}
+                alt={`Foto de ${selected.author_name}`}
+                className="w-12 h-12 rounded-full object-cover"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+              />
+              <div>
+                <p className="font-semibold">
+                  {selected.author_name || "Cliente"}
+                </p>
+                <p className="text-sm text-neutral-500">
+                  {selected.relative_time_description || ""}
+                </p>
+              </div>
+            </div>
+
+            <Stars rating={selected.rating ?? 0} />
+
+            <p className="mt-4 text-neutral-800 leading-relaxed whitespace-pre-line">
+              {selected.text || ""}
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
 
 export default Reviews;
-
-// const reviews = [
-//   {
-//     name: "João Silva",
-//     rating: 5,
-//     comment:
-//       "Excelente atendimento! Profissionais muito competentes e preço justo. Recomendo!",
-//     date: "Há 2 semanas",
-//   },
-//   {
-//     name: "Maria Santos",
-//     rating: 5,
-//     comment:
-//       "Sempre levo meu carro aqui. Serviço de qualidade e muita transparência no diagnóstico.",
-//     date: "Há 1 mês",
-//   },
-//   {
-//     name: "Pedro Oliveira",
-//     rating: 5,
-//     comment:
-//       "Melhor oficina da região! Resolveram um problema que outros mecânicos não conseguiram.",
-//     date: "Há 3 semanas",
-//   },
-//   {
-//     name: "Ana Costa",
-//     rating: 5,
-//     comment:
-//       "Atendimento impecável e muito profissional. Meu carro ficou perfeito!",
-//     date: "Há 1 semana",
-//   },
-// ];
-
-// const Reviews = () => {
-//   return (
-//     <section id="avaliacoes" className="py-20 bg-(--background)">
-//       <div className="container mx-auto px-6 md:px-8">
-//         <div className="text-center mb-12">
-//           <motion.h2
-//             variants={SlideUp(0.2)}
-//             initial="initial"
-//             whileInView={"animate"}
-//             className="text-4xl md:text-5xl font-bold mb-4"
-//           >
-//             O Que Nossos{" "}
-//             <span className="text-(--primary)">Clientes Dizem</span>
-//           </motion.h2>
-//           <motion.p
-//             variants={SlideUp(0.4)}
-//             initial="initial"
-//             whileInView={"animate"}
-//             className="text-lg text-(--muted-foreground) max-w-2xl mx-auto"
-//           >
-//             Avaliações reais de clientes satisfeitos com nossos serviços
-//           </motion.p>
-//         </div>
-
-//         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-//           {reviews.map((review, index) => (
-//             <Card
-//               key={index}
-//               className="bg-(--card) border-(--border) hover-shadow-custom transition-shadow"
-//             >
-//               <CardContent className="p-6">
-//                 <div className="flex mb-3">
-//                   {[...Array(review.rating)].map((_, i) => (
-//                     <Star
-//                       key={i}
-//                       className="w-5 h-5 fill-primary text-(--primary)"
-//                     />
-//                   ))}
-//                 </div>
-//                 <p className="text-(--foreground) mb-4">{review.comment}</p>
-//                 <div className="border-t border-border pt-4">
-//                   <p className="font-semibold text-(--foreground)">
-//                     {review.name}
-//                   </p>
-//                   <p className="text-sm text-(--muted-foreground)">
-//                     {review.date}
-//                   </p>
-//                 </div>
-//               </CardContent>
-//             </Card>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Reviews;
