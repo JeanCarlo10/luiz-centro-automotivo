@@ -1,6 +1,6 @@
 import { CheckCircle } from "lucide-react";
-import Carousel from "@/components/Carousel";
 import { motion } from "framer-motion";
+import AboutCarousel from "@/components/AboutCarousel";
 
 const features = [
   "Mais de 30 anos de experiência",
@@ -51,7 +51,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="w-full lg:w-1/2"
           >
-            <Carousel />
+            <AboutCarousel />
           </motion.div>
         </div>
       </div>

@@ -54,7 +54,9 @@ type QuoteFormData = z.infer<typeof quoteFormSchema>;
 
 const WHATSAPP_NUMBER = "5545999739942";
 const WHATSAPP_TEXT = "Olá! Gostaria de agendar um atendimento.";
-const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_TEXT)}`;
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  WHATSAPP_TEXT
+)}`;
 
 const Contact = () => {
   const form = useForm<QuoteFormData>({
@@ -313,7 +315,7 @@ const Contact = () => {
 
                 <Button
                   type="submit"
-                  className="w-full py-6 bg-(--primary) text-white font-semibold rounded-lg shadow-custom hover:bg-(--primary-medium) cursor-pointer"
+                  className="w-full py-6 bg-red-600 text-white font-semibold rounded-lg shadow-custom hover:bg-red-700 cursor-pointer"
                 >
                   Enviar solicitação
                 </Button>

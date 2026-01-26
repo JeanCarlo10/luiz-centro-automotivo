@@ -113,7 +113,7 @@ const HeroCarousel = () => {
             const buttonClass =
               item.buttonVariant === "yellow"
                 ? "bg-(--yellow) text-black hover:bg-yellow-400"
-                : "bg-(--primary) text-white hover:bg-(--primary-medium)";
+                : "bg-red-700 text-white hover:bg-red-800";
 
             return (
               <SwiperSlide key={i} className="w-full h-full">

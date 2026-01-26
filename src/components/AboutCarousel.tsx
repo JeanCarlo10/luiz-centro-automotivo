@@ -16,7 +16,7 @@ const images = [
   { backgroundImage: Mecanica06 },
 ];
 
-const Carousel = () => {
+const AboutCarousel = () => {
   return (
     <div className="flex items-center justify-center">
       <Swiper
@@ -49,4 +49,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default AboutCarousel;
