@@ -39,7 +39,7 @@ function Stars({ rating, size = 18 }: { rating: number; size?: number }) {
         <Star
           key={`full-${i}`}
           style={{ width: size, height: size }}
-          className={`fill-[var(--primary)] ${starClass}`}
+          className={`fill-(--primary) ${starClass}`}
         />
       ))}
 
@@ -52,7 +52,7 @@ function Stars({ rating, size = 18 }: { rating: number; size?: number }) {
           <span className="absolute inset-0 overflow-hidden w-1/2">
             <Star
               style={{ width: size, height: size }}
-              className={`fill-[var(--primary)] ${starClass}`}
+              className={`fill-(--primary) ${starClass}`}
             />
           </span>
         </span>
@@ -244,7 +244,7 @@ const Reviews = () => {
             href={GOOGLE_REVIEW_URL}
             target="_blank"
             rel="noreferrer"
-            className="md:ml-auto inline-flex items-center justify-center rounded-full bg-red-600 px-6 py-2 text-white font-semibold hover:bg-red-700 transition"
+            className="md:ml-auto inline-flex items-center justify-center rounded-full bg-(--button-primary) px-6 py-2 text-white font-semibold hover:bg-(--button-primary-medium) transition"
           >
             Avalie-nos no Google
           </a>
@@ -279,12 +279,12 @@ const Reviews = () => {
             {reviews.map((r, idx) => {
               const { short, needsMore } = clampText(
                 r.text || "",
-                isMobile ? 200 : 220
+                isMobile ? 180 : 200
               );
 
               return (
                 <SwiperSlide key={idx} className="pb-10">
-                  <div className="h-[300px] bg-neutral-100 rounded-2xl bg-(--card) p-5 shadow-sm flex flex-col">
+                  <div className="h-[300px] bg-neutral-100 rounded-2xl  p-5 shadow-sm flex flex-col">
                     <div className="mb-4 flex items-center gap-3">
                       <img
                         src={r.profile_photo_url || "/avatar-placeholder.png"}
@@ -331,7 +331,7 @@ const Reviews = () => {
       {/* Modal (popup) */}
       {open && selected && (
         <div
-          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 px-4"
+          className="fixed inset-0 z-999 flex items-center justify-center bg-black/60 px-4"
           onMouseDown={(e) => {
             if (e.target === e.currentTarget) setOpen(false);
           }}

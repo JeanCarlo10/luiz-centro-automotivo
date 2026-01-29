@@ -86,7 +86,7 @@ const Services = () => {
                 <Card className="h-full bg-(--card) border-(--border) border-2 hover:border-(--primary) transition-all duration-300 cursor-pointer group">
                   <CardHeader>
                     <div className="w-16 h-16 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 transition-transform">
-                      <Icon className="w-8 h-8 text-(--primary-foreground)" />
+                      <Icon className="w-8 h-8 text-(--background)" />
                     </div>
                     <CardTitle className="text-2xl mb-2">
                       {service.title}

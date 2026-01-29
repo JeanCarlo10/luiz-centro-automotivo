@@ -315,7 +315,7 @@ const Contact = () => {
 
                 <Button
                   type="submit"
-                  className="w-full py-6 bg-red-600 text-white font-semibold rounded-lg shadow-custom hover:bg-red-700 cursor-pointer"
+                  className="w-full py-6 bg-red-600 text-white font-semibold rounded-lg shadow-custom hover:bg-(--button-primary-medium) cursor-pointer"
                 >
                   Enviar solicitação
                 </Button>
